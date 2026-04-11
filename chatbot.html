@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MyHaven – Chat with Haven</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=container-queries"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "primary": "#5b4cf5",
+                    "primary-hover": "#4a3de0",
+                    "background-light": "#f0edfc",
+                    "background-dark": "#111121",
+                    "surface-dark": "#1e1e24",
+                    "surface-light": "#ffffff",
+                    "purple-msg": "#5b4cf5",
+                },
+                fontFamily: {
+                    "display": ["Lexend", "sans-serif"],
+                    "body": ["Noto Sans", "sans-serif"],
+                },
+                borderRadius: {
+                    "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"
+                },
+            },
+        },
+    }
+</script>
+<style>
+    /* Persona button active state */
+    .active-persona {
+        background: rgba(91,76,245,0.12);
+        border-color: rgba(91,76,245,0.5);
+        color: #5b4cf5;
+    }
+    .dark .active-persona {
+        background: rgba(91,76,245,0.2);
+        border-color: rgba(91,76,245,0.6);
+        color: #a78bfa;
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #242447; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #5b4cf5; }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50%       { transform: translateY(-6px); }
+    }
+    .dot {
+        width: 9px; height: 9px; border-radius: 50%;
+        background: linear-gradient(135deg, #5b4cf5, #a78bfa);
+        display: inline-block;
+        animation: bounce 1.4s ease-in-out infinite;
+        box-shadow: 0 0 6px rgba(91,76,245,0.4);
+    }
+    .dot:nth-child(2){ animation-delay: .22s; }
+    .dot:nth-child(3){ animation-delay: .44s; }
+
+    @keyframes fadeUp {
+        from { opacity:0; transform:translateY(12px); }
+        to   { opacity:1; transform:translateY(0); }
+    }
+    .msg-appear { animation: fadeUp .28s ease-out forwards; }
+
+    /* Pulsing aura for typing avatar */
+    @keyframes typingAura {
+        0%,100% { box-shadow: 0 0 0 0 rgba(91,76,245,0.5), 0 0 0 0 rgba(167,139,250,0.3); }
+        50%      { box-shadow: 0 0 0 8px rgba(91,76,245,0), 0 0 0 16px rgba(167,139,250,0); }
+    }
+    .typing-avatar { animation: typingAura 1.6s ease-in-out infinite; }
+
+    /* Breathing exercise */
+    @keyframes breatheIn  { 0%{transform:scale(1);opacity:0.7;} 100%{transform:scale(1.55);opacity:1;} }
+    @keyframes breatheHold{ 0%,100%{transform:scale(1.55);} }
+    @keyframes breatheOut { 0%{transform:scale(1.55);opacity:1;} 100%{transform:scale(1);opacity:0.7;} }
+    .breathe-in   { animation: breatheIn  4s ease-in-out forwards; }
+    .breathe-hold { animation: breatheHold 4s linear forwards; }
+    .breathe-out  { animation: breatheOut 6s ease-in-out forwards; }
+
+    /* Markdown message styles */
+    .haven-md ul { list-style: disc; padding-left: 1.25rem; margin: 0.25rem 0; }
+    .haven-md ol { list-style: decimal; padding-left: 1.25rem; margin: 0.25rem 0; }
+    .haven-md li { margin: 0.15rem 0; }
+    .haven-md strong { font-weight: 700; }
+    .haven-md em { font-style: italic; }
+    .haven-md p { margin: 0.2rem 0; }
+
+    @keyframes pulseGlow {
+        0%,100% { box-shadow:0 0 0 0 rgba(91,76,245,.5); }
+        50%      { box-shadow:0 0 0 7px rgba(91,76,245,0); }
+    }
+    .online-ring { animation: pulseGlow 2.2s infinite; }
+
+    .bar-fill { transition: width .7s cubic-bezier(.4,0,.2,1); }
+    textarea { font-family:'Noto Sans',sans-serif; }
+    textarea:focus { outline:none; box-shadow:none; }
+
+    /* ── Chip styles ── */
+    .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
+        border-radius: 9999px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        white-space: nowrap;
+        border: 1.5px solid transparent;
+        transition: all 0.18s ease;
+        letter-spacing: 0.01em;
+    }
+    .chip:hover { transform: translateY(-2px); }
+    .chip:active { transform: translateY(0px); }
+
+    /* chip colour variants */
+    .chip-red    { background: rgba(239,68,68,.12);  color:#f87171; border-color:rgba(239,68,68,.25); }
+    .chip-red:hover    { background:rgba(239,68,68,.22); border-color:rgba(239,68,68,.5); }
+
+    .chip-amber  { background: rgba(245,158,11,.12); color:#fbbf24; border-color:rgba(245,158,11,.25); }
+    .chip-amber:hover  { background:rgba(245,158,11,.22); border-color:rgba(245,158,11,.5); }
+
+    .chip-blue   { background: rgba(59,130,246,.12); color:#60a5fa; border-color:rgba(59,130,246,.25); }
+    .chip-blue:hover   { background:rgba(59,130,246,.22); border-color:rgba(59,130,246,.5); }
+
+    .chip-green  { background: rgba(34,197,94,.12);  color:#4ade80; border-color:rgba(34,197,94,.25); }
+    .chip-green:hover  { background:rgba(34,197,94,.22); border-color:rgba(34,197,94,.5); }
+
+    .chip-purple { background: rgba(168,85,247,.12); color:#c084fc; border-color:rgba(168,85,247,.25); }
+    .chip-purple:hover { background:rgba(168,85,247,.22); border-color:rgba(168,85,247,.5); }
+
+    .chip-pink   { background: rgba(236,72,153,.12); color:#f472b6; border-color:rgba(236,72,153,.25); }
+    .chip-pink:hover   { background:rgba(236,72,153,.22); border-color:rgba(236,72,153,.5); }
+
+    /* light mode overrides for chips */
+    html:not(.dark) .chip-red    { background:rgba(239,68,68,.08);  color:#dc2626; border-color:rgba(239,68,68,.2); }
+    html:not(.dark) .chip-amber  { background:rgba(245,158,11,.08); color:#d97706; border-color:rgba(245,158,11,.2); }
+    html:not(.dark) .chip-blue   { background:rgba(59,130,246,.08); color:#2563eb; border-color:rgba(59,130,246,.2); }
+    html:not(.dark) .chip-green  { background:rgba(34,197,94,.08);  color:#16a34a; border-color:rgba(34,197,94,.2); }
+    html:not(.dark) .chip-purple { background:rgba(168,85,247,.08); color:#9333ea; border-color:rgba(168,85,247,.2); }
+    html:not(.dark) .chip-pink   { background:rgba(236,72,153,.08); color:#db2777; border-color:rgba(236,72,153,.2); }
+
+    /* Onboarding Modal */
+    #onboarding-modal {
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+    .modal-content {
+        animation: modalBounce 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    @keyframes modalBounce {
+        from { opacity: 0; transform: scale(0.9) translateY(20px); }
+        to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-hidden h-screen flex flex-col md:flex-row transition-colors duration-300">
+
+<!-- ══ MOBILE SIDEBAR OVERLAY ══ -->
+<div id="mobile-sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 md:hidden" onclick="toggleMobileSidebar()"></div>
+
+<!-- ══ LEFT SIDEBAR ══ -->
+<aside id="left-sidebar" class="fixed inset-y-0 left-0 w-[280px] md:relative md:w-[260px] flex flex-col justify-between border-r border-gray-200 dark:border-[#242447] bg-white dark:bg-background-dark shrink-0 z-50 transition-transform duration-300 -translate-x-full md:translate-x-0 overflow-hidden shadow-2xl md:shadow-none">
+
+    <!-- Top nav section -->
+    <div class="flex flex-col gap-4 p-4">
+        <div class="flex items-center gap-3 px-2">
+            <div class="size-8 text-primary bg-primary/20 rounded-full flex items-center justify-center">
+                <span class="material-symbols-outlined text-lg">spa</span>
+            </div>
+            <h1 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">MyHaven</h1>
+        </div>
+        <nav class="flex flex-col gap-1">
+            <a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-100 dark:hover:bg-[#242447] text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors" href="index.html">
+                <span class="material-symbols-outlined">home</span>
+                <span class="text-sm font-medium">Home</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-gray-100 dark:bg-[#242447] text-gray-900 dark:text-white transition-colors shadow-sm" href="#">
+                <span class="material-symbols-outlined">chat_bubble</span>
+                <span class="text-sm font-medium">Chat</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-100 dark:hover:bg-[#242447] text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors" href="team.html">
+                <span class="material-symbols-outlined">groups</span>
+                <span class="text-sm font-medium">About Team</span>
+            </a>
+            <!-- Diary toggle button -->
+            <button type="button" onclick="toggleDiary()"
+                class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-purple-50 dark:hover:bg-[#2a2a4a] text-gray-500 dark:text-gray-400 hover:text-primary transition-colors w-full text-left">
+                <span class="material-symbols-outlined">auto_stories</span>
+                <span class="text-sm font-medium">Emotion Diary</span>
+                <span id="diary-count-badge" class="ml-auto text-[10px] bg-primary text-white px-1.5 py-0.5 rounded-full hidden">0</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- ══ EMOTIONAL DIARY PANEL ══ -->
+    <div id="diary-panel" class="hidden flex-col flex-1 overflow-hidden border-t border-gray-200 dark:border-[#242447]">
+
+        <!-- Diary Header -->
+        <div class="px-4 py-3 bg-gradient-to-r from-primary/10 to-purple-500/10 border-b border-gray-200 dark:border-[#242447]">
+            <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-lg">auto_stories</span>
+                    <h3 class="text-sm font-bold text-gray-900 dark:text-white">Emotional Diary</h3>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="exportDiary(event)"
+                        class="flex items-center gap-1 px-2 py-1 text-[10px] font-bold text-primary bg-primary/10 hover:bg-primary/20 rounded-lg transition-colors">
+                        <span class="material-symbols-outlined text-[13px]">download</span> Export CSV
+                    </button>
+                    <button onclick="toggleDiary()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
+                        <span class="material-symbols-outlined text-[18px]">close</span>
+                    </button>
+                </div>
+            </div>
+            <p class="text-[10px] text-gray-500 dark:text-gray-400">Auto-captured from your chat · emotion + sentiment</p>
+        </div>
+
+        <!-- Diary Entries List -->
+        <div class="flex-1 overflow-y-auto p-3 flex flex-col gap-2.5" id="diary-entries-list">
+            <p class="text-[10px] text-center text-gray-400 dark:text-gray-600 py-4" id="diary-empty-msg">
+                No entries yet. Start chatting and your diary will fill up automatically! 💬
+            </p>
+        </div>
+    </div>
+
+    <!-- Bottom crisis button (shown when diary is hidden) -->
+    <div id="sidebar-bottom" class="p-4 border-t border-gray-200 dark:border-[#242447]">
+        <a href="tel:9152987821">
+            <button class="w-full flex items-center justify-center gap-2 bg-red-600/90 hover:bg-red-600 text-white rounded-full h-12 px-4 transition-all shadow-lg group">
+                <span class="material-symbols-outlined group-hover:scale-110 transition-transform">sos</span>
+                <span class="text-sm font-bold tracking-wide">Crisis Hotline</span>
+            </button>
+        </a>
+        <p class="text-xs text-center text-gray-500 mt-3">Kiran: 9152987821 · 24/7 Free</p>
+    </div>
+</aside>
+
+<!-- ══ MAIN CHAT ══ -->
+<main class="flex-1 flex flex-col min-w-0 bg-background-light dark:bg-[#111122] relative transition-colors duration-300">
+
+    <!-- Header -->
+    <header class="h-16 flex items-center justify-between px-4 md:px-6 border-b border-gray-200 dark:border-[#242447] bg-white/95 dark:bg-[#111122]/95 backdrop-blur-sm z-10 transition-colors duration-300 shrink-0">
+        <div class="flex items-center gap-3 md:gap-4">
+            <!-- Mobile Menu Toggle -->
+            <button onclick="toggleMobileSidebar()" class="md:hidden flex items-center justify-center size-9 text-gray-500 hover:bg-gray-100 dark:hover:bg-[#242447] rounded-full transition-colors">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+            <div class="relative scale-90 md:scale-100">
+                <div class="size-10 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center online-ring">
+                    <span class="material-symbols-outlined text-white text-lg">self_improvement</span>
+                </div>
+                <div class="absolute bottom-0 right-0 size-3 bg-green-400 border-2 border-white dark:border-[#111122] rounded-full"></div>
+            </div>
+            <div>
+                <h2 class="text-gray-900 dark:text-white text-sm md:text-base font-bold leading-tight flex items-center gap-2">
+                    Haven
+                    <span class="hidden xs:inline-block px-1.5 py-0.5 rounded-full bg-gray-100 dark:bg-[#242447] text-[10px] font-semibold text-primary">AI Companion</span>
+                </h2>
+                <p id="status-text" class="text-[10px] md:text-xs text-gray-500 dark:text-gray-400 truncate max-w-[120px] md:max-w-none">Your safe space to talk</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-1 md:gap-2">
+            <button type="button" onclick="resetChat()" class="flex items-center justify-center md:gap-1.5 size-9 md:w-auto md:px-3 h-9 bg-gray-100 dark:bg-[#242447] hover:bg-primary/10 dark:hover:bg-[#5b4cf5]/20 text-gray-700 dark:text-gray-200 text-xs font-semibold rounded-full transition-colors border border-gray-200 dark:border-white/5">
+                <span class="material-symbols-outlined text-[18px] md:text-[15px]">refresh</span>
+                <span class="hidden md:inline">New Chat</span>
+            </button>
+            <button type="button" onclick="toggleTheme()" class="flex items-center justify-center size-9 bg-gray-100 dark:bg-[#242447] hover:bg-gray-200 dark:hover:bg-[#5b4cf5]/20 text-gray-500 dark:text-gray-300 rounded-full transition-colors">
+                <span class="material-symbols-outlined text-[18px]">dark_mode</span>
+            </button>
+            <!-- Mobile Insights Toggle -->
+            <button onclick="toggleRightSidebar()" class="md:hidden flex items-center justify-center size-9 text-gray-500 hover:bg-gray-100 dark:hover:bg-[#242447] rounded-full transition-colors">
+                <span class="material-symbols-outlined">analytics</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Messages -->
+    <div id="chat-container" class="flex-1 overflow-y-auto p-4 md:px-8 md:py-6 flex flex-col gap-4">
+        <div class="flex justify-center pt-1 pb-2">
+            <div class="bg-white/80 dark:bg-[#242447]/80 backdrop-blur text-gray-500 dark:text-[#9393c8] text-[10px] md:text-xs py-1.5 px-3 md:px-4 rounded-full flex items-center gap-1.5 shadow-sm border border-gray-200 dark:border-white/5 max-w-[90%] md:max-w-none text-center">
+                <span class="material-symbols-outlined text-[14px]">lock</span>
+                <span>Conversations are 100% confidential &amp; encrypted</span>
+            </div>
+        </div>
+        <div class="flex justify-center">
+            <span id="chat-date" class="text-xs font-medium text-gray-400 dark:text-gray-600"></span>
+        </div>
+    </div>
+
+    <!-- Input Area -->
+    <div class="bg-white dark:bg-[#111122] border-t border-gray-200 dark:border-[#242447] p-4 flex flex-col gap-3 transition-colors duration-300 shrink-0">
+
+        <!-- ── CHIPS ── -->
+        <div class="flex gap-2 overflow-x-auto pb-1 scrollbar-hide -mx-2 px-2 mask-linear-right">
+
+            <button type="button" onclick="sendChip(this,'I need to vent about something that\'s been bothering me')"
+                class="chip chip-red">
+                <span class="material-symbols-outlined text-[16px]">sentiment_very_dissatisfied</span>
+                Venting
+            </button>
+
+            <button type="button" onclick="sendChip(this,'I\'m feeling really anxious and overwhelmed right now')"
+                class="chip chip-amber">
+                <span class="material-symbols-outlined text-[16px]">sentiment_worried</span>
+                Anxiety
+            </button>
+
+            <button type="button" onclick="sendChip(this,'Exams are stressing me out a lot')"
+                class="chip chip-blue">
+                <span class="material-symbols-outlined text-[16px]">menu_book</span>
+                Study stress
+            </button>
+
+            <button type="button" onclick="sendChip(this,'I\'m feeling really low and sad today')"
+                class="chip chip-purple">
+                <span class="material-symbols-outlined text-[16px]">mood_bad</span>
+                Feeling low
+            </button>
+
+            <button type="button" onclick="sendChip(this,'Can you suggest something to help me relax and calm down?')"
+                class="chip chip-green">
+                <span class="material-symbols-outlined text-[16px]">spa</span>
+                Relaxation
+            </button>
+
+            <button type="button" onclick="sendChip(this,'I just need someone to talk to right now')"
+                class="chip chip-pink">
+                <span class="material-symbols-outlined text-[16px]">record_voice_over</span>
+                Just talk
+            </button>
+
+            <button type="button" onclick="startBreathingExercise()"
+                class="chip chip-blue">
+                <span class="material-symbols-outlined text-[16px]">air</span>
+                Breathe
+            </button>
+
+        </div>
+
+        <!-- Textarea row -->
+        <div class="flex items-end gap-2 bg-gray-50 dark:bg-[#1e1e24] p-2 pl-4 rounded-[24px] border border-gray-300 dark:border-[#242447] focus-within:border-primary/50 transition-colors shadow-sm">
+            <textarea
+                id="msg-input"
+                rows="1"
+                class="w-full bg-transparent border-none text-gray-900 dark:text-white placeholder-gray-400 focus:ring-0 resize-none py-2 max-h-32 text-sm leading-relaxed"
+                placeholder="Share what's on your mind…"
+                onkeydown="handleKey(event)"
+                oninput="autoResize(this)"
+            ></textarea>
+            <button type="button" onclick="sendMessage()" id="send-btn"
+                class="p-2 bg-purple-msg hover:bg-primary-hover text-white rounded-full transition-all flex items-center justify-center h-10 w-10 shrink-0 shadow-lg shadow-primary/20 hover:scale-105">
+                <span class="material-symbols-outlined text-[20px] translate-x-0.5">send</span>
+            </button>
+        </div>
+        <p class="text-[9px] md:text-[10px] text-center text-gray-400 dark:text-gray-600 leading-tight">
+            MyHaven is an AI companion. For emergencies call <strong>9152987821</strong> (Kiran · Free · 24/7).
+        </p>
+    </div>
+</main>
+
+<!-- ══ RIGHT SIDEBAR ══ -->
+<div id="right-sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 md:hidden" onclick="toggleRightSidebar()"></div>
+<aside id="right-sidebar" class="fixed inset-y-0 right-0 w-[300px] md:relative md:w-[320px] flex flex-col border-l border-gray-200 dark:border-[#242447] bg-white dark:bg-background-dark shrink-0 overflow-y-auto transition-transform duration-300 translate-x-full md:translate-x-0 z-50 shadow-2xl md:shadow-none">
+
+    <!-- Profile -->
+    <div class="p-6 border-b border-gray-200 dark:border-[#242447]">
+        <div class="flex items-center gap-4">
+            <div class="size-14 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center">
+                <span class="material-symbols-outlined text-white text-2xl">person</span>
+            </div>
+            <div>
+                <h3 id="profile-name" class="text-gray-900 dark:text-white font-bold text-base">You</h3>
+                <p class="text-xs text-gray-500 dark:text-gray-400">Session active</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="p-5 flex flex-col gap-5">
+
+        <!-- Context tags -->
+        <div id="context-panel" class="hidden bg-gray-50 dark:bg-surface-dark rounded-2xl p-4 border border-gray-200 dark:border-[#242447]">
+            <p class="text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-2">Haven knows about you</p>
+            <div id="context-tags" class="flex flex-wrap gap-1.5"></div>
+        </div>
+
+        <!-- Emotion -->
+        <div class="bg-gray-50 dark:bg-surface-dark rounded-2xl p-5 border border-gray-200 dark:border-[#242447] shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+                <h4 class="text-xs font-bold text-gray-600 dark:text-gray-300 uppercase tracking-widest">Emotion Detected</h4>
+                <span class="material-symbols-outlined text-primary text-lg">sentiment_satisfied</span>
+            </div>
+            <div class="flex items-center gap-3 mb-4">
+                <span id="emotion-emoji" class="text-4xl transition-all duration-500">🙂</span>
+                <div>
+                    <p id="emotion-label" class="text-xl font-bold text-gray-900 dark:text-white">Neutral</p>
+                    <p id="emotion-confidence" class="text-xs text-gray-500 dark:text-gray-400">Confidence: —</p>
+                </div>
+            </div>
+            <div class="w-full bg-gray-200 dark:bg-[#111122] rounded-full h-1.5 mb-3">
+                <div id="emotion-bar" class="bar-fill bg-gradient-to-r from-primary to-indigo-400 h-1.5 rounded-full" style="width:0%"></div>
+            </div>
+            <div class="flex flex-wrap gap-1.5" id="emotion-pills"></div>
+            <p id="emotion-note" class="text-[10px] text-gray-400 dark:text-gray-500 mt-3">Waiting for your message…</p>
+            <p class="text-[10px] text-gray-400 dark:text-gray-500 mt-0.5">Powered by MuRIL-BERT</p>
+        </div>
+
+        <!-- Sentiment -->
+        <div class="bg-gray-50 dark:bg-surface-dark rounded-2xl p-5 border border-gray-200 dark:border-[#242447] shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+                <h4 class="text-xs font-bold text-gray-600 dark:text-gray-300 uppercase tracking-widest">Sentiment</h4>
+                <span class="material-symbols-outlined text-primary text-lg">analytics</span>
+            </div>
+            <div class="flex items-center gap-3 mb-4">
+                <span id="sentiment-badge" class="px-3 py-1 rounded-full text-sm font-bold bg-gray-200 dark:bg-[#242447] text-gray-600 dark:text-gray-300 transition-all duration-500">—</span>
+            </div>
+            <div class="mb-3">
+                <div class="flex justify-between text-[10px] text-gray-500 mb-1"><span>Negative</span><span>Polarity</span><span>Positive</span></div>
+                <div class="relative w-full bg-gray-200 dark:bg-[#111122] rounded-full h-2">
+                    <div class="absolute left-1/2 top-0 h-2 w-0.5 bg-gray-400 dark:bg-gray-600 -translate-x-1/2"></div>
+                    <div id="polarity-bar" class="bar-fill absolute h-2 rounded-full" style="left:50%;width:0%"></div>
+                </div>
+                <p id="polarity-val" class="text-xs text-center text-gray-500 dark:text-gray-400 mt-1">—</p>
+            </div>
+            <div>
+                <div class="flex justify-between text-[10px] text-gray-500 mb-1"><span>Objective</span><span>Subjectivity</span><span>Subjective</span></div>
+                <div class="w-full bg-gray-200 dark:bg-[#111122] rounded-full h-2">
+                    <div id="subjectivity-bar" class="bar-fill bg-gradient-to-r from-orange-400 to-amber-400 h-2 rounded-full" style="width:0%"></div>
+                </div>
+                <p id="subjectivity-val" class="text-xs text-center text-gray-500 dark:text-gray-400 mt-1">—</p>
+            </div>
+            <p id="sentiment-note" class="text-[10px] text-gray-400 dark:text-gray-500 mt-3">Powered by MuRIL-BERT</p>
+        </div>
+
+        <!-- Weekly Mood Chart -->
+        <div class="bg-gray-50 dark:bg-surface-dark rounded-2xl p-5 border border-gray-200 dark:border-[#242447] shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+                <h4 class="text-xs font-bold text-gray-600 dark:text-gray-300 uppercase tracking-widest">Mood This Week</h4>
+                <span class="material-symbols-outlined text-primary text-lg">bar_chart</span>
+            </div>
+            <canvas id="mood-chart" height="110"></canvas>
+            <p class="text-[10px] text-gray-400 dark:text-gray-500 mt-2 text-center">Based on your diary entries</p>
+        </div>
+
+        <!-- AI Persona Selector -->
+        <div class="bg-gray-50 dark:bg-surface-dark rounded-2xl p-5 border border-gray-200 dark:border-[#242447] shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+                <h4 class="text-xs font-bold text-gray-600 dark:text-gray-300 uppercase tracking-widest">Haven's Style</h4>
+                <span class="material-symbols-outlined text-primary text-lg">tune</span>
+            </div>
+            <div class="flex flex-col gap-2" id="persona-buttons">
+                <button onclick="setPersona('listener')" id="persona-listener"
+                    class="persona-btn text-left px-3 py-2 rounded-xl text-xs font-semibold border border-gray-200 dark:border-[#242447] text-gray-600 dark:text-gray-400 hover:border-primary/40 transition-all duration-200">
+                    🤍 Gentle Listener
+                </button>
+                <button onclick="setPersona('coach')" id="persona-coach"
+                    class="persona-btn text-left px-3 py-2 rounded-xl text-xs font-semibold border border-gray-200 dark:border-[#242447] text-gray-600 dark:text-gray-400 hover:border-primary/40 transition-all duration-200">
+                    ⚡ Action Coach
+                </button>
+                <button onclick="setPersona('friend')" id="persona-friend"
+                    class="persona-btn text-left px-3 py-2 rounded-xl text-xs font-semibold border border-gray-200 dark:border-[#242447] text-gray-600 dark:text-gray-400 hover:border-primary/40 transition-all duration-200">
+                    😄 Casual Friend
+                </button>
+            </div>
+            <p class="text-[10px] text-gray-400 dark:text-gray-500 mt-2">Takes effect on your next message</p>
+        </div>
+
+        <!-- Daily Goals 
+        <div class="flex flex-col gap-3">
+            <h4 class="text-xs font-bold text-gray-600 dark:text-gray-300 uppercase tracking-widest">Daily Goals</h4>
+            <div class="flex flex-col gap-2">
+                <label class="flex items-center gap-3 p-3 bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-[#242447] cursor-pointer hover:border-primary/40 transition-colors">
+                    <input type="checkbox" class="accent-primary" checked>
+                    <span class="text-sm text-gray-500 dark:text-gray-400 line-through">Open Haven</span>
+                </label>
+                <label class="flex items-center gap-3 p-3 bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-[#242447] cursor-pointer hover:border-primary/40 transition-colors">
+                    <input type="checkbox" class="accent-primary">
+                    <span class="text-sm text-gray-700 dark:text-gray-200">Meditate 10 mins</span>
+                </label>
+                <label class="flex items-center gap-3 p-3 bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-[#242447] cursor-pointer hover:border-primary/40 transition-colors">
+                    <input type="checkbox" class="accent-primary">
+                    <span class="text-sm text-gray-700 dark:text-gray-200">Journal thoughts</span>
+                </label>
+                <label class="flex items-center gap-3 p-3 bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-[#242447] cursor-pointer hover:border-primary/40 transition-colors">
+                    <input type="checkbox" class="accent-primary">
+                    <span class="text-sm text-gray-700 dark:text-gray-200">Drink 2L water</span>
+                </label>
+            </div>
+        </div>
+        -->
+
+        <!-- Theme toggle -->
+        <div class="pt-4 border-t border-gray-200 dark:border-[#242447]">
+            <div class="flex items-center justify-between px-3 py-2 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-[#242447] rounded-lg cursor-pointer transition-colors" onclick="toggleTheme()">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[18px]">dark_mode</span>
+                    <span>Dark Mode</span>
+                </div>
+                <div id="theme-toggle" class="relative inline-flex h-5 w-9 items-center rounded-full bg-primary transition-colors duration-200">
+                    <span id="theme-knob" class="translate-x-[18px] inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 shadow-sm"></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</aside>
+
+<!-- ══ ONBOARDING MODAL ══ -->
+<div id="onboarding-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 hidden">
+    <div class="modal-content bg-white dark:bg-[#1e1e2e] w-[90%] max-w-md p-8 rounded-[32px] shadow-2xl border border-gray-100 dark:border-[#2d2d50] relative">
+        <button onclick="skipOnboarding()" class="absolute top-5 right-5 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        
+        <div class="size-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-primary text-3xl">waving_hand</span>
+        </div>
+        
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Welcome to Haven</h2>
+        <p class="text-gray-500 dark:text-gray-400 mb-8 text-sm leading-relaxed">I'm your safe space for thoughts and feelings. Before we begin, what should I call you?</p>
+        
+        <div class="space-y-4">
+            <div>
+                <input type="text" id="user-name-input" placeholder="Enter your name..." 
+                    class="w-full px-5 py-4 bg-gray-50 dark:bg-[#151525] border border-gray-200 dark:border-[#242447] rounded-2xl text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/40 transition-all"
+                    onkeydown="if(event.key==='Enter') submitName()">
+            </div>
+            <button onclick="submitName()" class="w-full py-4 bg-primary hover:bg-indigo-600 text-white font-bold rounded-2xl shadow-lg shadow-primary/25 transition-all active:scale-[0.98]">
+                Start Chatting
+            </button>
+            <button onclick="skipOnboarding()" class="w-full py-2 text-sm text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors">
+                Maybe later
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════ JAVASCRIPT ══════════════════════════ -->
+<script>
+const BACKEND  = "http://127.0.0.1:8000";
+
+let USER_ID = localStorage.getItem("myhaven_user_id");
+if (!USER_ID) {
+    USER_ID = "user_" + Math.random().toString(36).slice(2,9);
+    localStorage.setItem("myhaven_user_id", USER_ID);
+}
+
+let isThinking = false;
+
+// ── INIT ──────────────────────────────────────────────────────────
+window.addEventListener("DOMContentLoaded", async () => {
+    document.getElementById("chat-date").textContent = new Date().toLocaleDateString("en-IN",{weekday:"long",year:"numeric",month:"long",day:"numeric"});
+    initEmotionPills();
+    syncThemeToggle();
+    loadDiaryEntries();
+
+    // Persona initialization (Normal by default)
+    if (typeof initPersonaPanel === 'function') initPersonaPanel();
+
+    const alreadyStarted = sessionStorage.getItem("haven_session_started");
+    if (!alreadyStarted) {
+        checkOnboarding();
+    } else {
+        const storedName = localStorage.getItem("myhaven_user_name");
+        if (storedName) document.getElementById("profile-name").textContent = storedName;
+        setStatus("Online · Haven");
+        appendMessage("haven", `Welcome back${storedName ? ', ' + storedName : ''}! 💛 What's on your mind?`);
+    }
+});
+
+async function checkOnboarding() {
+    const storedName = localStorage.getItem("myhaven_user_name");
+    const skipped    = sessionStorage.getItem("haven_onboarding_skipped");
+    
+    if (storedName) {
+        document.getElementById("profile-name").textContent = storedName;
+        await startSession();
+        return;
+    }
+
+    if (skipped) {
+        await startSession();
+        return;
+    }
+
+    // New user, show modal
+    document.getElementById("onboarding-modal").classList.remove("hidden");
+}
+
+async function submitName() {
+    const input = document.getElementById("user-name-input");
+    const name  = input.value.trim();
+    if (!name) return;
+
+    localStorage.setItem("myhaven_user_name", name);
+    document.getElementById("profile-name").textContent = name;
+    document.getElementById("onboarding-modal").classList.add("hidden");
+
+    try {
+        await fetch(`${BACKEND}/set_name`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ user_id: USER_ID, name: name })
+        });
+    } catch (e) { console.error("Could not save name to backend:", e); }
+
+    await startSession();
+}
+
+function skipOnboarding() {
+    sessionStorage.setItem("haven_onboarding_skipped", "1");
+    document.getElementById("onboarding-modal").classList.add("hidden");
+    startSession();
+}
+
+async function startSession() {
+    sessionStorage.setItem("haven_session_started", "1");
+    setStatus("Haven is connecting\u2026");
+    try {
+        const res  = await fetch(`${BACKEND}/start`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({user_id:USER_ID})});
+        const data = await res.json();
+        
+        // If name exists in backend but not local, sync it
+        if (data.user_name && !localStorage.getItem("myhaven_user_name")) {
+            localStorage.setItem("myhaven_user_name", data.user_name);
+            document.getElementById("profile-name").textContent = data.user_name;
+        }
+
+        appendMessage("haven", data.reply);
+        setStatus("Online \u00B7 Haven");
+    } catch {
+        appendMessage("haven","Hey! I'm Haven \uD83D\uDC9B It looks like the backend isn't running. Start it with: `uvicorn main:app --reload` inside the backend/ folder, then refresh.");
+        setStatus("\u26A0\uFE0F Backend offline");
+    }
+}
+
+// ── SEND ──────────────────────────────────────────────────────────
+async function sendMessage() {
+    const input = document.getElementById("msg-input");
+    const text  = input.value.trim();
+    if (!text || isThinking) return;
+    input.value = ""; autoResize(input);
+    appendMessage("user", text);
+    showTyping(); setStatus("Haven is typing…"); isThinking = true;
+    try {
+        const personaHint = (currentPersona && PERSONA_PROMPTS[currentPersona]) ? PERSONA_PROMPTS[currentPersona] : '';
+        const res  = await fetch(`${BACKEND}/chat`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({user_id:USER_ID,message:text,persona_hint:personaHint})});
+        const data = await res.json();
+        hideTyping();
+        appendMessage("haven", data.reply);
+        updateEmotion(data.emotion);
+        updateSentiment(data.sentiment);
+        updateContextPanel(data.context);
+        setStatus("Online · Haven");
+        // Refresh diary panel live if it's open
+        if (!document.getElementById('diary-panel').classList.contains('hidden')) {
+            loadDiaryEntries();
+        }
+    } catch {
+        hideTyping();
+        appendMessage("haven","Hmm, couldn't reach the server. Is the backend running?");
+        setStatus("⚠️ Connection error");
+    }
+    isThinking = false;
+}
+
+function handleKey(e){
+    if(e.key==="Enter" && !e.shiftKey){
+        e.preventDefault();
+        e.stopPropagation();
+        sendMessage();
+        return false;
+    }
+}
+
+document.addEventListener("keydown", function(e){
+    if(e.key === "Enter" && !e.shiftKey && document.activeElement && document.activeElement.id === "msg-input"){
+        e.preventDefault();
+        e.stopPropagation();
+        sendMessage();
+    }
+}, true);
+
+function sendChip(btn, message) {
+    document.getElementById("msg-input").value = message;
+    sendMessage();
+}
+
+async function resetChat() {
+    try { await fetch(`${BACKEND}/reset`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({user_id:USER_ID})}); } catch(_){}
+    USER_ID = "user_" + Math.random().toString(36).slice(2,9);
+    localStorage.setItem("myhaven_user_id", USER_ID);
+    sessionStorage.removeItem("haven_session_started");
+    document.getElementById("chat-container").innerHTML = `
+        <div class="flex justify-center sticky top-0 z-0 pt-1 pb-2">
+            <div class="bg-white/80 dark:bg-[#242447]/80 backdrop-blur text-gray-500 dark:text-[#9393c8] text-xs py-1.5 px-4 rounded-full flex items-center gap-1.5 shadow-sm border border-gray-200 dark:border-white/5">
+                <span class="material-symbols-outlined text-[14px]">lock</span>
+                Conversations are 100% confidential &amp; encrypted
+            </div>
+        </div>
+        <div class="flex justify-center"><span id="chat-date" class="text-xs font-medium text-gray-400 dark:text-gray-600"></span></div>`;
+    document.getElementById("chat-date").textContent = new Date().toLocaleDateString("en-IN",{weekday:"long",year:"numeric",month:"long",day:"numeric"});
+    resetSidebar();
+    await startSession();
+}
+
+// ── MESSAGES ──────────────────────────────────────────────────────
+function appendMessage(role, text) {
+    const container = document.getElementById("chat-container");
+    const isHaven   = role === "haven";
+    const isDiary   = role === "diary";
+    const wrapper   = document.createElement("div");
+    wrapper.className = `flex items-end gap-3 msg-appear ${(isHaven||isDiary)?"":"flex-row-reverse"}`;
+
+    const avatar = document.createElement("div");
+    if (isDiary) {
+        avatar.className = "size-8 rounded-full bg-gradient-to-tr from-pink-400 to-purple-500 flex items-center justify-center shrink-0 mb-1";
+        avatar.innerHTML = `<span class="material-symbols-outlined text-white text-sm">auto_stories</span>`;
+    } else if (isHaven) {
+        avatar.className = "size-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center shrink-0 mb-1";
+        avatar.innerHTML = `<span class="material-symbols-outlined text-white text-sm">self_improvement</span>`;
+    } else {
+        avatar.className = "size-8 rounded-full bg-gradient-to-br from-gray-400 to-gray-500 dark:from-gray-600 dark:to-gray-700 flex items-center justify-center shrink-0 mb-1";
+        avatar.innerHTML = `<span class="material-symbols-outlined text-white text-sm">person</span>`;
+    }
+
+    // Use marked.js for full markdown — DOMPurify-lite: strip script tags
+    const rawMd = text.replace(/<script[\s\S]*?<\/script>/gi, '');
+    const html  = (typeof marked !== 'undefined') ? marked.parse(rawMd) : rawMd.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
+    const bubble = document.createElement("div");
+    if (isDiary) {
+        bubble.className = "max-w-[85%] md:max-w-[75%] px-4 py-3 rounded-2xl rounded-bl-sm bg-gradient-to-br from-pink-50 to-purple-50 dark:from-pink-900/20 dark:to-purple-900/20 border border-pink-200 dark:border-pink-800/40 text-gray-800 dark:text-gray-200 text-sm leading-relaxed shadow-sm haven-md";
+    } else if (isHaven) {
+        bubble.className = "max-w-[85%] md:max-w-[75%] px-4 py-3 rounded-2xl rounded-bl-sm bg-white dark:bg-[#1e1e2e] border border-gray-200 dark:border-[#2d2d50] text-gray-800 dark:text-gray-100 text-sm leading-relaxed shadow-sm haven-md";
+    } else {
+        bubble.className = "max-w-[85%] md:max-w-[75%] px-4 py-3 rounded-2xl rounded-br-sm bg-purple-msg text-white text-sm leading-relaxed shadow-md shadow-primary/20";
+    }
+    bubble.innerHTML = html;
+
+    const time = document.createElement("p");
+    time.className = "text-[10px] text-gray-400 dark:text-gray-600 mt-1 px-1 " + ((isHaven||isDiary)?"text-left":"text-right");
+    time.textContent = new Date().toLocaleTimeString("en-IN",{hour:"2-digit",minute:"2-digit"});
+
+    const col = document.createElement("div");
+    col.className = "flex flex-col " + ((isHaven||isDiary)?"":"items-end");
+    col.appendChild(bubble); col.appendChild(time);
+    wrapper.appendChild(avatar); wrapper.appendChild(col);
+    container.appendChild(wrapper);
+    container.scrollTop = container.scrollHeight;
+}
+
+function escapeHtml(t){ return t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+
+let typingEl = null;
+function showTyping(){
+    const c=document.getElementById("chat-container");
+    typingEl=document.createElement("div");
+    typingEl.className="flex items-end gap-3 msg-appear";
+    typingEl.id="typing-indicator";
+    typingEl.innerHTML=`
+        <div class="size-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center shrink-0 typing-avatar">
+            <span class="material-symbols-outlined text-white text-sm">self_improvement</span>
+        </div>
+        <div class="px-5 py-3.5 rounded-2xl rounded-bl-sm bg-white dark:bg-[#1e1e2e] border border-gray-200 dark:border-[#2d2d50] shadow-sm flex items-center gap-2">
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        </div>`;
+    c.appendChild(typingEl); c.scrollTop=c.scrollHeight;
+}
+function hideTyping(){ if(typingEl){typingEl.remove();typingEl=null;} }
+
+// ══════════════════════════════════════════════════════════════════
+// EMOTIONAL DIARY MODULE — Auto-captured from chat
+// ══════════════════════════════════════════════════════════════════
+
+function toggleDiary() {
+    const panel  = document.getElementById('diary-panel');
+    const bottom = document.getElementById('sidebar-bottom');
+    const isOpen = !panel.classList.contains('hidden');
+    if (isOpen) {
+        panel.classList.add('hidden');
+        panel.classList.remove('flex');
+        bottom.classList.remove('hidden');
+    } else {
+        panel.classList.remove('hidden');
+        panel.classList.add('flex');
+        panel.style.flexDirection = 'column';
+        bottom.classList.add('hidden');
+        loadDiaryEntries();
+    }
+}
+
+async function loadDiaryEntries() {
+    const list     = document.getElementById('diary-entries-list');
+    const emptyMsg = document.getElementById('diary-empty-msg');
+    if (!list) return;
+
+    // Clear existing entries (keep empty msg)
+    Array.from(list.children).forEach(c => {
+        if (c.id !== 'diary-empty-msg') c.remove();
+    });
+
+    // Show a subtle loading state
+    emptyMsg.textContent = 'Loading…';
+    emptyMsg.classList.remove('hidden');
+
+    try {
+        const res     = await fetch(`${BACKEND}/diary/${USER_ID}`);
+        const entries = await res.json();
+
+        emptyMsg.textContent = 'No entries yet. Start chatting and your diary will fill up automatically! 💬';
+
+        if (!entries || entries.length === 0) {
+            emptyMsg.classList.remove('hidden');
+            updateDiaryBadge(0);
+            return;
+        }
+
+        emptyMsg.classList.add('hidden');
+        updateDiaryBadge(entries.length);
+
+        const EMOTION_EMOJI = {
+            joy:'😊', sadness:'😢', fear:'😰', anger:'😠',
+            surprise:'😲', neutral:'😐', disgust:'🤢', shame:'😳'
+        };
+        const EMOTION_COLORS = {
+            joy:       { text:'text-yellow-600 dark:text-yellow-300', border:'border-l-yellow-400', bg:'bg-yellow-50 dark:bg-yellow-900/10' },
+            sadness:   { text:'text-blue-600 dark:text-blue-300',     border:'border-l-blue-400',   bg:'bg-blue-50 dark:bg-blue-900/10' },
+            fear:      { text:'text-purple-600 dark:text-purple-300', border:'border-l-purple-400', bg:'bg-purple-50 dark:bg-purple-900/10' },
+            anger:     { text:'text-red-600 dark:text-red-300',       border:'border-l-red-400',    bg:'bg-red-50 dark:bg-red-900/10' },
+            surprise:  { text:'text-orange-600 dark:text-orange-300', border:'border-l-orange-400', bg:'bg-orange-50 dark:bg-orange-900/10' },
+            neutral:   { text:'text-gray-500 dark:text-gray-400',     border:'border-l-gray-400',   bg:'bg-gray-50 dark:bg-[#1e1e2e]' },
+            disgust:   { text:'text-green-600 dark:text-green-300',   border:'border-l-green-400',  bg:'bg-green-50 dark:bg-green-900/10' },
+            shame:     { text:'text-pink-600 dark:text-pink-300',     border:'border-l-pink-400',   bg:'bg-pink-50 dark:bg-pink-900/10' },
+        };
+
+        entries.slice(0, 30).forEach(entry => {
+            const el      = document.createElement('div');
+            const ts      = new Date(entry.timestamp * 1000);
+            const dateStr = ts.toLocaleDateString("en-IN", {day:"numeric", month:"short"});
+            const timeStr = ts.toLocaleTimeString("en-IN", {hour:"2-digit", minute:"2-digit"});
+            const emo     = (entry.emotion_label || 'neutral').toLowerCase();
+            const emoji   = EMOTION_EMOJI[emo] || '💬';
+            const colors  = EMOTION_COLORS[emo] || EMOTION_COLORS.neutral;
+            const pol     = parseFloat(entry.sentiment_score || 0);
+            const polLabel = pol >= 0.15 ? 'Positive' : pol <= -0.15 ? 'Negative' : 'Neutral';
+            const polBg    = pol >= 0.15 ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300'
+                           : pol <= -0.15 ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300'
+                           : 'bg-gray-100 text-gray-600 dark:bg-gray-700/40 dark:text-gray-400';
+
+            el.className  = `${colors.bg} rounded-xl p-3.5 border border-gray-100 dark:border-[#242447] border-l-[3px] ${colors.border} hover:shadow-md transition-all duration-200 cursor-default`;
+
+            el.innerHTML = `
+                <div class="flex items-center justify-between gap-2 mb-2">
+                    <div class="flex items-center gap-2">
+                        <span class="text-lg leading-none">${emoji}</span>
+                        <span class="text-[11px] font-bold capitalize ${colors.text}">${emo}</span>
+                    </div>
+                    <span class="text-[9px] text-gray-400 dark:text-gray-500 shrink-0 font-medium">${dateStr} · ${timeStr}</span>
+                </div>
+                <p class="text-[11px] text-gray-700 dark:text-gray-300 leading-relaxed line-clamp-2 mb-2">${escapeHtml(entry.raw_chat)}</p>
+                <div class="flex items-center gap-2">
+                    <span class="text-[9px] font-semibold px-2 py-0.5 rounded-full ${polBg}">${polLabel}</span>
+                    <span class="text-[9px] text-gray-400 dark:text-gray-500">score ${pol.toFixed(2)}</span>
+                </div>
+            `;
+            list.appendChild(el);
+        });
+
+    } catch (err) {
+        emptyMsg.textContent = '⚠️ Could not load diary. Is the backend running?';
+        emptyMsg.classList.remove('hidden');
+    }
+}
+
+function exportDiary(e) {
+    e.preventDefault();
+    window.open(`${BACKEND}/diary/${USER_ID}/export`, '_blank');
+}
+
+function updateDiaryBadge(count) {
+    const badge = document.getElementById('diary-count-badge');
+    if (!badge) return;
+    if (count > 0) {
+        badge.textContent = count;
+        badge.classList.remove('hidden');
+    } else {
+        badge.classList.add('hidden');
+    }
+}
+
+// ── EMOTION ───────────────────────────────────────────────────────
+const EMOTION_COLORS = {
+    joy:"bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300",
+    sadness:"bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300",
+    fear:"bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300",
+    anger:"bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300",
+    surprise:"bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300",
+    neutral:"bg-gray-100 text-gray-600 dark:bg-gray-700/60 dark:text-gray-300",
+    disgust:"bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300",
+    shame:"bg-pink-100 text-pink-700 dark:bg-pink-900/40 dark:text-pink-300",
+};
+const ALL_EMOTIONS=["joy","sadness","fear","anger","surprise","neutral","disgust","shame"];
+
+function initEmotionPills(){
+    const c=document.getElementById("emotion-pills");
+    ALL_EMOTIONS.forEach(e=>{
+        const p=document.createElement("span");
+        p.id=`pill-${e}`;
+        p.className="text-[10px] px-2 py-0.5 rounded-full font-medium opacity-40 bg-gray-100 text-gray-500 dark:bg-gray-700/40 dark:text-gray-400 transition-all duration-300";
+        p.textContent=e.charAt(0).toUpperCase()+e.slice(1);
+        c.appendChild(p);
+    });
+}
+
+function updateEmotion(emotion){
+    if(!emotion) return;
+    const label=(emotion.label||"Neutral").toLowerCase();
+    const conf=Math.round((emotion.confidence||0)*100);
+    document.getElementById("emotion-emoji").textContent=emotion.emoji||"🙂";
+    document.getElementById("emotion-label").textContent=emotion.label||"Neutral";
+    document.getElementById("emotion-confidence").textContent=`Confidence: ${conf}%`;
+    document.getElementById("emotion-bar").style.width=conf+"%";
+    document.getElementById("emotion-note").textContent=emotion.note||"";
+    ALL_EMOTIONS.forEach(e=>{
+        const p=document.getElementById(`pill-${e}`);
+        if(!p) return;
+        p.className = e===label
+            ? `text-[10px] px-2 py-0.5 rounded-full font-bold opacity-100 transition-all duration-300 ${EMOTION_COLORS[e]||EMOTION_COLORS.neutral}`
+            : "text-[10px] px-2 py-0.5 rounded-full font-medium opacity-40 bg-gray-100 text-gray-500 dark:bg-gray-700/40 dark:text-gray-400 transition-all duration-300";
+    });
+}
+
+// ── SENTIMENT ─────────────────────────────────────────────────────
+function updateSentiment(sentiment){
+    if(!sentiment) return;
+    const label=sentiment.label||"Neutral";
+    const pol=parseFloat(sentiment.polarity||0);
+    const sub=parseFloat(sentiment.subjectivity||0);
+    const badge=document.getElementById("sentiment-badge");
+    badge.textContent=label;
+    badge.className="px-3 py-1 rounded-full text-sm font-bold transition-all duration-500 "+(
+        label==="Positive"?"bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300":
+        label==="Negative"?"bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300":
+        "bg-gray-200 text-gray-600 dark:bg-[#242447] dark:text-gray-300");
+    const pBar=document.getElementById("polarity-bar");
+    const hw=Math.abs(pol)*50;
+    if(pol>=0){pBar.style.left="50%";pBar.style.width=hw+"%";pBar.className="bar-fill absolute h-2 rounded-full bg-gradient-to-r from-green-400 to-emerald-500 transition-all";}
+    else{pBar.style.left=(50-hw)+"%";pBar.style.width=hw+"%";pBar.className="bar-fill absolute h-2 rounded-full bg-gradient-to-r from-red-500 to-rose-400 transition-all";}
+    document.getElementById("polarity-val").textContent=pol.toFixed(2);
+    document.getElementById("subjectivity-bar").style.width=(sub*100)+"%";
+    document.getElementById("subjectivity-val").textContent=sub.toFixed(2);
+    document.getElementById("sentiment-note").textContent=sentiment.note||"Powered by MuRIL-BERT";
+}
+
+// ── CONTEXT PANEL ─────────────────────────────────────────────────
+function updateContextPanel(ctx){
+    if(!ctx) return;
+    if(ctx.name) document.getElementById("profile-name").textContent=ctx.name;
+    const panel=document.getElementById("context-panel");
+    const tags=document.getElementById("context-tags");
+    const items=[...(ctx.topics||[]),...(ctx.mood_history||[]).slice(-2)];
+    if(items.length>0){
+        panel.classList.remove("hidden");
+        tags.innerHTML=items.slice(-8).map(t=>
+            `<span class="text-[10px] px-2 py-0.5 bg-primary/10 text-primary rounded-full font-medium">${t}</span>`
+        ).join("");
+    }
+}
+
+function resetSidebar(){
+    document.getElementById("profile-name").textContent="You";
+    document.getElementById("context-panel").classList.add("hidden");
+    document.getElementById("context-tags").innerHTML="";
+    document.getElementById("emotion-emoji").textContent="🙂";
+    document.getElementById("emotion-label").textContent="Neutral";
+    document.getElementById("emotion-confidence").textContent="Confidence: —";
+    document.getElementById("emotion-bar").style.width="0%";
+    document.getElementById("emotion-note").textContent="Waiting for your message…";
+    ALL_EMOTIONS.forEach(e=>{
+        const p=document.getElementById(`pill-${e}`);
+        if(p) p.className="text-[10px] px-2 py-0.5 rounded-full font-medium opacity-40 bg-gray-100 text-gray-500 dark:bg-gray-700/40 dark:text-gray-400 transition-all duration-300";
+    });
+    document.getElementById("sentiment-badge").textContent="—";
+    document.getElementById("polarity-bar").style.width="0%";
+    document.getElementById("polarity-bar").style.left="50%";
+    document.getElementById("polarity-val").textContent="—";
+    document.getElementById("subjectivity-bar").style.width="0%";
+    document.getElementById("subjectivity-val").textContent="—";
+    document.getElementById("sentiment-note").textContent="Waiting for your message…";
+}
+
+// ── HELPERS ───────────────────────────────────────────────────────
+function setStatus(m){ document.getElementById("status-text").textContent=m; }
+function autoResize(el){ el.style.height="auto"; el.style.height=Math.min(el.scrollHeight,128)+"px"; }
+
+function toggleTheme(){
+    const isDark=document.documentElement.classList.toggle("dark");
+    const knob=document.getElementById("theme-knob");
+    const track=document.getElementById("theme-toggle");
+    if(isDark){ knob.classList.replace("translate-x-0.5","translate-x-[18px]"); track.classList.replace("bg-gray-300","bg-primary"); }
+    else       { knob.classList.replace("translate-x-[18px]","translate-x-0.5"); track.classList.replace("bg-primary","bg-gray-300"); }
+}
+function syncThemeToggle(){
+    const isDark=document.documentElement.classList.contains("dark");
+    const knob=document.getElementById("theme-knob");
+    const track=document.getElementById("theme-toggle");
+    if(!isDark){ knob.classList.replace("translate-x-[18px]","translate-x-0.5"); track.classList.replace("bg-primary","bg-gray-300"); }
+}
+
+function toggleMobileSidebar() {
+    const sidebar = document.getElementById('left-sidebar');
+    const overlay = document.getElementById('mobile-sidebar-overlay');
+    const isHidden = sidebar.classList.contains('-translate-x-full');
+
+    if (isHidden) {
+        sidebar.classList.remove('-translate-x-full');
+        overlay.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    } else {
+        sidebar.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+}
+
+function toggleRightSidebar() {
+    const sidebar = document.getElementById('right-sidebar');
+    const overlay = document.getElementById('right-sidebar-overlay');
+    const isHidden = sidebar.classList.contains('translate-x-full');
+
+    if (isHidden) {
+        sidebar.classList.remove('translate-x-full');
+        overlay.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    } else {
+        sidebar.classList.add('translate-x-full');
+        overlay.classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+}
+// ── BREATHING EXERCISE ───────────────────────────────────────────
+function startBreathingExercise() {
+    const container = document.getElementById('chat-container');
+    const wrapper = document.createElement('div');
+    wrapper.className = 'flex justify-center my-4 msg-appear';
+    wrapper.innerHTML = `
+        <div class="bg-white dark:bg-[#1e1e2e] border border-gray-200 dark:border-[#2d2d50] rounded-2xl p-6 w-full max-w-sm shadow-md text-center">
+            <p class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-4">Box Breathing</p>
+            <div class="flex justify-center mb-5">
+                <div id="breath-circle" class="w-20 h-20 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 opacity-70 shadow-lg shadow-primary/30 transition-all duration-300"></div>
+            </div>
+            <p id="breath-label" class="text-lg font-bold text-gray-800 dark:text-white mb-1">Breathe In…</p>
+            <p id="breath-sub" class="text-xs text-gray-400 dark:text-gray-500 mb-4">Inhale slowly for 4 seconds</p>
+            <div class="flex justify-center gap-1 mb-4" id="breath-dots">
+                ${[...Array(4)].map((_,i)=>`<div class="w-2 h-2 rounded-full bg-gray-200 dark:bg-gray-700" id="bdot-${i}"></div>`).join('')}
+            </div>
+            <button onclick="this.closest('.flex').remove()" class="text-[11px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors">✕ Close</button>
+        </div>`;
+    container.appendChild(wrapper);
+    container.scrollTop = container.scrollHeight;
+    runBreathingCycle(wrapper);
+}
+
+function runBreathingCycle(wrapper) {
+    const circle = wrapper.querySelector('#breath-circle');
+    const label  = wrapper.querySelector('#breath-label');
+    const sub    = wrapper.querySelector('#breath-sub');
+    const dots   = wrapper.querySelectorAll('[id^="bdot-"]');
+    let phase = 0;
+    const phases = [
+        { label:'Breathe In…',   sub:'Inhale slowly for 4 seconds', dur:4000, scale:'scale(1.55)', dot:0 },
+        { label:'Hold…',         sub:'Hold for 4 seconds',           dur:4000, scale:'scale(1.55)', dot:1 },
+        { label:'Breathe Out…',  sub:'Exhale slowly for 4 seconds',  dur:4000, scale:'scale(1)',    dot:2 },
+        { label:'Hold…',         sub:'Hold for 4 seconds',           dur:4000, scale:'scale(1)',    dot:3 },
+    ];
+
+    function nextPhase() {
+        if (!wrapper.isConnected) return;
+        const p = phases[phase % phases.length];
+        label.textContent = p.label;
+        sub.textContent   = p.sub;
+        circle.style.transition = `transform ${p.dur}ms ease-in-out, opacity ${p.dur}ms ease-in-out`;
+        circle.style.transform  = p.scale;
+        circle.style.opacity    = p.scale.includes('1.55') ? '1' : '0.7';
+        dots.forEach((d,i) => {
+            d.className = i <= (phase % phases.length)
+                ? 'w-2 h-2 rounded-full bg-primary'
+                : 'w-2 h-2 rounded-full bg-gray-200 dark:bg-gray-700';
+        });
+        phase++;
+        setTimeout(nextPhase, p.dur);
+    }
+    nextPhase();
+}
+
+// ── AI PERSONA ────────────────────────────────────────────────────
+let currentPersona = localStorage.getItem('haven_persona') || null;
+const PERSONA_PROMPTS = {
+    listener: 'You are a gentle, empathetic listener. Your tone is soft, warm and validating. You sit with the user\'s feelings without rushing to fix them.',
+    coach:    'You are an action-oriented mental wellness coach. After empathizing briefly, you suggest practical next steps, coping strategies, or micro-actions.',
+    friend:   'You are a casual, relatable friend. Use informal language, a bit of humor where appropriate, and keep things light unless the topic is serious.',
+};
+
+function setPersona(p, isExplicit = true) {
+    if (currentPersona === p && isExplicit) return;
+    
+    currentPersona = p;
+    localStorage.setItem('haven_persona', p);
+    
+    document.querySelectorAll('.persona-btn').forEach(btn => {
+        btn.className = 'persona-btn text-left px-3 py-2 rounded-xl text-xs font-semibold border border-gray-200 dark:border-[#242447] text-gray-600 dark:text-gray-400 hover:border-primary/40 transition-all duration-200';
+    });
+    
+    if (p) {
+        const active = document.getElementById(`persona-${p}`);
+        if (active) active.className = 'persona-btn active-persona text-left px-3 py-2 rounded-xl text-xs font-semibold border transition-all duration-200';
+        
+        if (isExplicit) {
+            appendMessage('haven', `Got it! I'll switch to **${p === 'listener' ? 'Gentle Listener' : p === 'coach' ? 'Action Coach' : 'Casual Friend'}** mode. Feel free to keep chatting! 💛`);
+        }
+    }
+}
+
+function initPersonaPanel() {
+    if (currentPersona) {
+        setPersona(currentPersona, false);
+    }
+}
+
+// ── WEEKLY MOOD CHART ─────────────────────────────────────────────
+let moodChart = null;
+async function buildMoodChart() {
+    const canvas = document.getElementById('mood-chart');
+    if (!canvas) return;
+    try {
+        const res = await fetch(`${BACKEND}/diary/${USER_ID}`);
+        const entries = await res.json();
+        if (!entries || !entries.length) return;
+
+        const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+        const scores = Array(7).fill(null);
+        const now = new Date();
+        entries.forEach(e => {
+            const d = new Date(e.timestamp * 1000);
+            const diff = Math.round((now - d) / 86400000);
+            if (diff < 7) {
+                const idx = d.getDay();
+                scores[idx] = (scores[idx] === null ? 0 : scores[idx]) + parseFloat(e.sentiment_score || 0);
+            }
+        });
+        // rotate so today is last
+        const todayIdx = now.getDay();
+        const labels = [];
+        const data   = [];
+        for (let i = 1; i <= 7; i++) {
+            const idx = (todayIdx + i) % 7;
+            labels.push(days[idx]);
+            data.push(scores[idx] !== null ? parseFloat(scores[idx].toFixed(2)) : null);
+        }
+        const isDark = document.documentElement.classList.contains('dark');
+        const gridColor = isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.07)';
+        const textColor = isDark ? '#9393c8' : '#6b7280';
+
+        if (moodChart) moodChart.destroy();
+        moodChart = new Chart(canvas, {
+            type: 'line',
+            data: {
+                labels,
+                datasets: [{
+                    label: 'Mood',
+                    data,
+                    borderColor: '#5b4cf5',
+                    backgroundColor: 'rgba(91,76,245,0.12)',
+                    pointBackgroundColor: data.map(v => v >= 0.15 ? '#4ade80' : v <= -0.15 ? '#f87171' : '#a78bfa'),
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                    borderWidth: 2.5,
+                    tension: 0.45,
+                    fill: true,
+                    spanGaps: true,
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` Score: ${ctx.parsed.y}` } } },
+                scales: {
+                    x: { grid: { color: gridColor }, ticks: { color: textColor, font: { size: 10 } } },
+                    y: { min: -1, max: 1, grid: { color: gridColor }, ticks: { color: textColor, font: { size: 10 }, stepSize: 0.5 } }
+                }
+            }
+        });
+    } catch(_) {}
+}
+
+// Build chart on load + after each message
+window.addEventListener('DOMContentLoaded', () => setTimeout(buildMoodChart, 1200));
+const _origSend = sendMessage;
+window.sendMessage = async function() {
+    await _origSend.apply(this, arguments);
+    setTimeout(buildMoodChart, 1500);
+};
+</script>
+</body>
+</html>
