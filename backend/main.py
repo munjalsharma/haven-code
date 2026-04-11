@@ -13,8 +13,15 @@ import time
 import csv
 import io
 from datetime import datetime
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, Any
 from contextlib import contextmanager
+
+# PostgreSQL support for cloud hosting (Supabase)
+try:
+    import psycopg2
+    from psycopg2.extras import RealDictCursor
+except ImportError:
+    psycopg2 = None
  
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -46,8 +53,15 @@ HAVEN_ADMIN_KEY = os.getenv("HAVEN_ADMIN_KEY", "haven_master_2026").strip()
  
 MAX_TURNS = 30
  
-# DB path: sits next to main.py inside backend/
+# DB paths
+DATABASE_URL = os.getenv("DATABASE_URL", "").strip() # For Supabase
 DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "myhaven.db")
+
+def is_postgres():
+    return bool(DATABASE_URL)
+
+def get_placeholder():
+    return "%s" if is_postgres() else "?"
  
 CRISIS_WORDS = [
     "suicide", "kill myself", "end my life", "self harm", "self-harm",
@@ -63,23 +77,36 @@ INDIA_KIRAN = "9152987821 (Kiran · Free · 24/7)"
 # ══════════════════════════════════════════════════════════════════════════════
  
 def get_db_connection():
-    """Returns a new SQLite connection. Use as a context manager via get_db()."""
+    if is_postgres():
+        if not psycopg2:
+            raise ImportError("psycopg2-binary is required for PostgreSQL support.")
+        return psycopg2.connect(DATABASE_URL)
     conn = sqlite3.connect(DB_PATH, check_same_thread=False)
     conn.row_factory = sqlite3.Row
     return conn
  
 @contextmanager
 def get_db():
-    """Context manager for DB — always closes connection after use."""
     conn = get_db_connection()
     try:
-        yield conn
+        if is_postgres():
+            cur = conn.cursor(cursor_factory=RealDictCursor)
+            yield cur
+        else:
+            yield conn
         conn.commit()
-    except Exception:
+    except Exception as e:
         conn.rollback()
-        raise
+        raise e
     finally:
         conn.close()
+
+def db_execute(conn_or_cur, query, params=None):
+    if is_postgres():
+        query = query.replace("?", "%s")
+    if params is None:
+        return conn_or_cur.execute(query)
+    return conn_or_cur.execute(query, params)
  
  
 def init_db():
@@ -109,16 +136,19 @@ def init_db():
             CREATE INDEX IF NOT EXISTS idx_messages_user_id ON messages(user_id);
  
             CREATE TABLE IF NOT EXISTS diary_entries (
-                id              INTEGER PRIMARY KEY AUTOINCREMENT,
+                id              SERIAL PRIMARY KEY,
                 user_id         TEXT NOT NULL,
                 raw_chat        TEXT NOT NULL,
                 emotion_label   TEXT,
                 sentiment_score REAL,
-                timestamp       REAL NOT NULL,
-                FOREIGN KEY (user_id) REFERENCES users(user_id)
+                timestamp       REAL NOT NULL
             );
- 
-            CREATE INDEX IF NOT EXISTS idx_diary_user_id ON diary_entries(user_id);
+        """)
+        if not is_postgres():
+            conn.executescript("""
+                CREATE INDEX IF NOT EXISTS idx_messages_user_id ON messages(user_id);
+                CREATE INDEX IF NOT EXISTS idx_diary_user_id ON diary_entries(user_id);
+            """)
         """)
     print(f"[DB] ✅ Database ready at {DB_PATH}")
  
@@ -130,20 +160,19 @@ def init_db():
 def db_get_user(user_id: str) -> dict:
     """Load user context from DB. Returns a dict (never None)."""
     with get_db() as conn:
-        row = conn.execute(
-            "SELECT * FROM users WHERE user_id = ?", (user_id,)
-        ).fetchone()
-        if row:
-            return {
-                "name":         row["name"],
-                "language":     row["language"] or "english",
-                "topics":       json.loads(row["topics"] or "[]"),
-                "mood_history": json.loads(row["mood_history"] or "[]"),
-                "details":      json.loads(row["details"] or "[]"),
-            }
+        db_execute(conn, "SELECT * FROM users WHERE user_id = ?", (user_id,))
+        row = conn.fetchone() if hasattr(conn, 'fetchone') else conn.execute("SELECT * FROM users WHERE user_id = ?", (user_id,)).fetchone()
+        
+        # Safe fetch for both SQLite and Postgres
+        if not row:
+            return {"name": None, "language": "english", "topics": [], "mood_history": [], "details": []}
+            
         return {
-            "name": None, "language": "english",
-            "topics": [], "mood_history": [], "details": []
+            "name":         row["name"],
+            "language":     row["language"] or "english",
+            "topics":       json.loads(row["topics"] or "[]"),
+            "mood_history": json.loads(row["mood_history"] or "[]"),
+            "details":      json.loads(row["details"] or "[]"),
         }
  
  
@@ -151,7 +180,7 @@ def db_upsert_user(user_id: str, ctx: dict):
     """Save or update user context in DB."""
     now = time.time()
     with get_db() as conn:
-        conn.execute("""
+        query = """
             INSERT INTO users (user_id, name, language, topics, mood_history, details, created_at, updated_at)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT(user_id) DO UPDATE SET
@@ -161,7 +190,8 @@ def db_upsert_user(user_id: str, ctx: dict):
                 mood_history = excluded.mood_history,
                 details      = excluded.details,
                 updated_at   = excluded.updated_at
-        """, (
+        """
+        db_execute(conn, query, (
             user_id,
             ctx.get("name"),
             ctx.get("language", "english"),
@@ -175,78 +205,69 @@ def db_upsert_user(user_id: str, ctx: dict):
 def db_get_messages(user_id: str, limit: int = MAX_TURNS) -> List[dict]:
     """Load last N messages for a user, oldest first."""
     with get_db() as conn:
-        rows = conn.execute("""
-            SELECT role, content FROM messages
-            WHERE user_id = ?
-            ORDER BY id DESC
-            LIMIT ?
-        """, (user_id, limit)).fetchall()
-        # rows are newest-first, reverse to get chronological order
+        query = "SELECT role, content FROM messages WHERE user_id = ? ORDER BY id DESC LIMIT ?"
+        db_execute(conn, query, (user_id, limit))
+        rows = conn.fetchall() if hasattr(conn, 'fetchall') else conn.execute(query, (user_id, limit)).fetchall()
         return [{"role": r["role"], "content": r["content"]} for r in reversed(rows)]
  
  
 def db_add_message(user_id: str, role: str, content: str):
     """Append a single message to DB."""
     with get_db() as conn:
-        conn.execute(
-            "INSERT INTO messages (user_id, role, content, created_at) VALUES (?, ?, ?, ?)",
-            (user_id, role, content, time.time())
-        )
+        query = "INSERT INTO messages (user_id, role, content, created_at) VALUES (?, ?, ?, ?)"
+        db_execute(conn, query, (user_id, role, content, time.time()))
  
  
 def db_clear_user(user_id: str):
     """Delete all messages for a user (reset conversation). Keep user profile."""
     with get_db() as conn:
-        conn.execute("DELETE FROM messages WHERE user_id = ?", (user_id,))
+        db_execute(conn, "DELETE FROM messages WHERE user_id = ?", (user_id,))
  
  
 def db_full_reset_user(user_id: str):
     """Delete messages AND user profile entirely."""
     with get_db() as conn:
-        conn.execute("DELETE FROM messages WHERE user_id = ?", (user_id,))
-        conn.execute("DELETE FROM users WHERE user_id = ?", (user_id,))
+        db_execute(conn, "DELETE FROM messages WHERE user_id = ?", (user_id,))
+        db_execute(conn, "DELETE FROM users WHERE user_id = ?", (user_id,))
  
  
 def db_add_diary_entry(user_id: str, raw_chat: str, emotion_label: str, sentiment_score: float):
     """Auto-save a diary entry from chat."""
     with get_db() as conn:
-        conn.execute(
-            "INSERT INTO diary_entries (user_id, raw_chat, emotion_label, sentiment_score, timestamp) VALUES (?,?,?,?,?)",
-            (user_id, raw_chat, emotion_label, round(sentiment_score, 3), time.time())
-        )
+        query = "INSERT INTO diary_entries (user_id, raw_chat, emotion_label, sentiment_score, timestamp) VALUES (?,?,?,?,?)"
+        db_execute(conn, query, (user_id, raw_chat, emotion_label, round(sentiment_score, 3), time.time()))
  
  
 def db_get_diary(user_id: str) -> List[dict]:
     """Return all diary entries for a user, newest first."""
     with get_db() as conn:
-        rows = conn.execute(
-            "SELECT id, user_id, raw_chat, emotion_label, sentiment_score, timestamp FROM diary_entries WHERE user_id=? ORDER BY timestamp DESC",
-            (user_id,)
-        ).fetchall()
+        query = "SELECT id, user_id, raw_chat, emotion_label, sentiment_score, timestamp FROM diary_entries WHERE user_id=? ORDER BY timestamp DESC"
+        db_execute(conn, query, (user_id,))
+        rows = conn.fetchall() if hasattr(conn, 'fetchall') else conn.execute(query, (user_id,)).fetchall()
         return [dict(r) for r in rows]
 
 
 def db_admin_get_all_users() -> List[dict]:
     """Admin only: list all users who have ever chatted."""
     with get_db() as conn:
-        rows = conn.execute("""
+        query = """
             SELECT u.user_id, u.name, u.updated_at, COUNT(m.id) as msg_count
             FROM users u
             LEFT JOIN messages m ON u.user_id = m.user_id
-            GROUP BY u.user_id
+            GROUP BY u.user_id, u.name, u.updated_at
             ORDER BY u.updated_at DESC
-        """).fetchall()
+        """
+        db_execute(conn, query)
+        rows = conn.fetchall() if hasattr(conn, 'fetchall') else conn.execute(query).fetchall()
         return [dict(r) for r in rows]
 
 
 def db_admin_get_full_history(user_id: str) -> List[dict]:
     """Admin only: get every single message for a user."""
     with get_db() as conn:
-        rows = conn.execute("""
-            SELECT role, content, created_at FROM messages
-            WHERE user_id = ?
-            ORDER BY created_at ASC
-        """, (user_id,)).fetchall()
+        query = "SELECT role, content, created_at FROM messages WHERE user_id = ? ORDER BY created_at ASC"
+        db_execute(conn, query, (user_id,))
+        rows = conn.fetchall() if hasattr(conn, 'fetchall') else conn.execute(query, (user_id,)).fetchall()
         return [dict(r) for r in rows]
  
  

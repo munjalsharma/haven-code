@@ -11,3 +11,5 @@ seaborn
 plotly
 scikit-learn
 joblib
+psycopg2-binary
+python-multipart
