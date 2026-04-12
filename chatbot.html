@@ -165,7 +165,7 @@
     }
 </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-hidden h-screen flex flex-col md:flex-row transition-colors duration-300">
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-hidden h-screen h-[100dvh] flex flex-col md:flex-row transition-colors duration-300">
 
 <!-- ══ MOBILE SIDEBAR OVERLAY ══ -->
 <div id="mobile-sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 md:hidden" onclick="toggleMobileSidebar()"></div>
@@ -300,7 +300,7 @@
     </div>
 
     <!-- Input Area -->
-    <div class="bg-white dark:bg-[#111122] border-t border-gray-200 dark:border-[#242447] p-4 flex flex-col gap-3 transition-colors duration-300 shrink-0">
+    <div class="bg-white dark:bg-[#111122] border-t border-gray-200 dark:border-[#242447] p-4 pb-8 md:pb-4 flex flex-col gap-3 transition-colors duration-300 shrink-0" style="padding-bottom: max(1.5rem, env(safe-area-inset-bottom));">
 
         <!-- ── CHIPS ── -->
         <div class="flex gap-2 overflow-x-auto pb-1 scrollbar-hide -mx-2 px-2 mask-linear-right">
