@@ -149,7 +149,6 @@ def init_db():
                 CREATE INDEX IF NOT EXISTS idx_messages_user_id ON messages(user_id);
                 CREATE INDEX IF NOT EXISTS idx_diary_user_id ON diary_entries(user_id);
             """)
-        """)
     print(f"[DB] ✅ Database ready at {DB_PATH}")
  
  
