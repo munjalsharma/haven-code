@@ -14,6 +14,7 @@ COPY . .
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
 ENV PORT=7860
+ENV PYTHONPATH=$PYTHONPATH:/app/backend
 
 # Expose the port FastAPI will run on
 EXPOSE 7860
