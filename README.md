@@ -1,3 +1,12 @@
+---
+title: Haven AI
+emoji: 🛡️
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+pinned: false
+---
+
 # MyHaven — Complete Setup Guide (Windows 10 + VS Code)
 
 ---
