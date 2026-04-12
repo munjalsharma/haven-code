@@ -548,7 +548,7 @@
 
 <!-- ══════════════════════════ JAVASCRIPT ══════════════════════════ -->
 <script>
-const BACKEND  = "http://127.0.0.1:8000";
+const BACKEND  = "https://munjalsharma-haven-backend.hf.space";
 
 let USER_ID = localStorage.getItem("myhaven_user_id");
 if (!USER_ID) {
@@ -640,8 +640,8 @@ async function startSession() {
         appendMessage("haven", data.reply);
         setStatus("Online \u00B7 Haven");
     } catch {
-        appendMessage("haven","Hey! I'm Haven \uD83D\uDC9B It looks like the backend isn't running. Start it with: `uvicorn main:app --reload` inside the backend/ folder, then refresh.");
-        setStatus("\u26A0\uFE0F Backend offline");
+        appendMessage("haven","Hey! I'm Haven 💛 It looks like my cloud engine is still waking up. Please wait 10 seconds and refresh the page! (This happens after long periods of inactivity).");
+        setStatus("⚠️ Connection error");
     }
 }
 
