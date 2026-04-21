@@ -80,7 +80,19 @@ def get_db_connection():
     if is_postgres():
         if not psycopg2:
             raise ImportError("psycopg2-binary is required for PostgreSQL support.")
-        return psycopg2.connect(DATABASE_URL)
+        
+        url = DATABASE_URL
+        if "supabase.co" in url or "supabase.com" in url:
+            if "sslmode=" not in url:
+                separator = "&" if "?" in url else "?"
+                url += f"{separator}sslmode=require"
+        
+        try:
+            return psycopg2.connect(url)
+        except Exception as e:
+            print(f"[DB] ❌ Postgres connection failed: {e}")
+            raise e
+            
     conn = sqlite3.connect(DB_PATH, check_same_thread=False)
     conn.row_factory = sqlite3.Row
     return conn
@@ -111,30 +123,35 @@ def db_execute(conn_or_cur, query, params=None):
  
 def init_db():
     """Create tables if they don't exist. Safe to call multiple times."""
-    with get_db() as conn:
-        conn.executescript("""
-            CREATE TABLE IF NOT EXISTS users (
-                user_id     TEXT PRIMARY KEY,
-                name        TEXT,
-                language    TEXT DEFAULT 'english',
-                topics      TEXT DEFAULT '[]',
-                mood_history TEXT DEFAULT '[]',
-                details     TEXT DEFAULT '[]',
-                created_at  REAL,
-                updated_at  REAL
-            );
- 
+    is_pg = is_postgres()
+    
+    # Common table strings with minor syntax variations
+    users_sql = """
+        CREATE TABLE IF NOT EXISTS users (
+            user_id     TEXT PRIMARY KEY,
+            name        TEXT,
+            language    TEXT DEFAULT 'english',
+            topics      TEXT DEFAULT '[]',
+            mood_history TEXT DEFAULT '[]',
+            details     TEXT DEFAULT '[]',
+            created_at  REAL,
+            updated_at  REAL
+        );
+    """
+    
+    # SQLite uses AUTOINCREMENT, Postgres uses SERIAL
+    if is_pg:
+        messages_sql = """
             CREATE TABLE IF NOT EXISTS messages (
-                id          INTEGER PRIMARY KEY AUTOINCREMENT,
+                id          SERIAL PRIMARY KEY,
                 user_id     TEXT NOT NULL,
                 role        TEXT NOT NULL,
                 content     TEXT NOT NULL,
                 created_at  REAL NOT NULL,
                 FOREIGN KEY (user_id) REFERENCES users(user_id)
             );
- 
-            CREATE INDEX IF NOT EXISTS idx_messages_user_id ON messages(user_id);
- 
+        """
+        diary_sql = """
             CREATE TABLE IF NOT EXISTS diary_entries (
                 id              SERIAL PRIMARY KEY,
                 user_id         TEXT NOT NULL,
@@ -143,13 +160,40 @@ def init_db():
                 sentiment_score REAL,
                 timestamp       REAL NOT NULL
             );
-        """)
-        if not is_postgres():
-            conn.executescript("""
-                CREATE INDEX IF NOT EXISTS idx_messages_user_id ON messages(user_id);
-                CREATE INDEX IF NOT EXISTS idx_diary_user_id ON diary_entries(user_id);
-            """)
-    print(f"[DB] ✅ Database ready at {DB_PATH}")
+        """
+    else:
+        messages_sql = """
+            CREATE TABLE IF NOT EXISTS messages (
+                id          INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id     TEXT NOT NULL,
+                role        TEXT NOT NULL,
+                content     TEXT NOT NULL,
+                created_at  REAL NOT NULL,
+                FOREIGN KEY (user_id) REFERENCES users(user_id)
+            );
+        """
+        diary_sql = """
+            CREATE TABLE IF NOT EXISTS diary_entries (
+                id              INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id         TEXT NOT NULL,
+                raw_chat        TEXT NOT NULL,
+                emotion_label   TEXT,
+                sentiment_score REAL,
+                timestamp       REAL NOT NULL
+            );
+        """
+
+    with get_db() as conn:
+        # Use individual execute() calls which work for both SQLite connections and Postgres cursors
+        conn.execute(users_sql)
+        conn.execute(messages_sql)
+        conn.execute(diary_sql)
+        
+        # Create indexes - safe for both DB types
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_messages_user_id ON messages(user_id);")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_diary_user_id ON diary_entries(user_id);")
+            
+    print(f"[DB] ✅ Database ready ({'Postgres' if is_pg else 'SQLite'})")
  
  
 # ══════════════════════════════════════════════════════════════════════════════
