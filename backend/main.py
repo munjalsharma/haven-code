@@ -99,7 +99,8 @@ def get_db_connection():
             return psycopg2.connect(url)
         except Exception as e:
             print(f"[DB] ❌ Postgres connection failed: {e}")
-            raise e
+            print("[DB] ⚠️ Falling back to SQLite for this session.")
+            # Do NOT raise e, fall through to SQLite
             
     conn = sqlite3.connect(DB_PATH, check_same_thread=False)
     conn.row_factory = sqlite3.Row
@@ -191,17 +192,21 @@ def init_db():
             );
         """
 
-    with get_db() as conn:
-        # Use individual execute() calls which work for both SQLite connections and Postgres cursors
-        conn.execute(users_sql)
-        conn.execute(messages_sql)
-        conn.execute(diary_sql)
-        
-        # Create indexes - safe for both DB types
-        conn.execute("CREATE INDEX IF NOT EXISTS idx_messages_user_id ON messages(user_id);")
-        conn.execute("CREATE INDEX IF NOT EXISTS idx_diary_user_id ON diary_entries(user_id);")
+    try:
+        with get_db() as conn:
+            # Use individual execute() calls which work for both SQLite connections and Postgres cursors
+            conn.execute(users_sql)
+            conn.execute(messages_sql)
+            conn.execute(diary_sql)
             
-    print(f"[DB] ✅ Database ready ({'Postgres' if is_pg else 'SQLite'})")
+            # Create indexes - safe for both DB types
+            conn.execute("CREATE INDEX IF NOT EXISTS idx_messages_user_id ON messages(user_id);")
+            conn.execute("CREATE INDEX IF NOT EXISTS idx_diary_user_id ON diary_entries(user_id);")
+                
+        print(f"[DB] ✅ Database ready ({'Postgres' if is_pg else 'SQLite'})")
+    except Exception as e:
+        print(f"[DB] ⚠️ Startup DB initialization skipped/failed: {e}")
+        print("[DB] App will attempt to continue with local SQLite if possible.")
  
  
 # ══════════════════════════════════════════════════════════════════════════════
