@@ -9,10 +9,13 @@ To keep user chats forever even when the server restarts, we use Supabase (Postg
 
 1.  **Sign up**: Go to [supabase.com](https://supabase.com/) and create a free account.
 2.  **New Project**: Create a new project named `Haven`.
-3.  **Get Connection String**:
-    -   Go to **Project Settings** > **Database**.
-    -   Find your **Connection string** (URI) in the "Node.js" or "URI" section. It looks like this:
-        `postgresql://postgres:[PASSWORD]@db.[REF].supabase.co:5432/postgres`
+3.  **Get Connection String (IMPORTANT for Hugging Face)**:
+    -   Go to **Settings** > **Database**.
+    -   Scroll down to the **Connection Pooler** section.
+    -   Toggle **Enable Connection Pooler** to **ON**.
+    -   Set the **Mode** to **Transaction**.
+    -   Find your **Connection string** (URI). It looks like this:
+        `postgresql://postgres:[PASSWORD]@aws-0-[region].pooler.supabase.com:6543/postgres`
     -   **Copy this** (replace `[PASSWORD]` with your actual database password).
 4.  **Save this URL**: You will need it in Step 2.
 

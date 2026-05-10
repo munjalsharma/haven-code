@@ -55,7 +55,15 @@ MAX_TURNS = 30
  
 # DB paths
 DATABASE_URL = os.getenv("DATABASE_URL", "").strip() # For Supabase
-DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "myhaven.db")
+DB_DIR = os.getenv("DB_DIR", os.path.dirname(os.path.abspath(__file__)))
+DB_PATH = os.path.join(DB_DIR, "myhaven.db")
+
+# Ensure the database directory exists (important for persistent disks)
+if not os.path.exists(DB_DIR):
+    try:
+        os.makedirs(DB_DIR, exist_ok=True)
+    except Exception as e:
+        print(f"[DB] ⚠️ Could not create DB_DIR: {e}")
 
 def is_postgres():
     return bool(DATABASE_URL)

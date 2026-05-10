@@ -51,3 +51,14 @@ Once hosted, you can access your monitoring panel at:
 
 ## 🏗️ 4. Frontend Deployment
 You can host the `chatbot.html` on **Netlify** or **GitHub Pages**. Just ensure you update the `URL` in the JavaScript to point to your server's IP address instead of `localhost:8000`.
+
+---
+
+## 🛠️ Troubleshooting (Hugging Face)
+
+### "Network is unreachable" Error
+If your Space fails to start with this error, it's because Hugging Face doesn't support IPv6. 
+- **Fix**: Make sure you are using the **Connection Pooler** URL from Supabase (port 6543) instead of the direct connection URL.
+
+### "AttributeError: executescript"
+If you see this, ensure you have the latest `backend/main.py` which includes the cross-platform database initialization logic.
