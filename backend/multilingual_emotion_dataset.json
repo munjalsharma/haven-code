@@ -1,0 +1,9089 @@
+[
+  {
+    "text": "I can't believe this happened so suddenly!",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बहुत तनाव महसूस हो रहा है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Mujhe vent karna hai, thoda bura lag raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel ashamed of how I acted yesterday.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "कोई भी मेरी बात नहीं समझता।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Mind overthink kar raha hai, samjh nahi aa raha.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am terrified of failing my final interview.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Aaj bahut lonely feel ho raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "It is so unfair how they treated me at work.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "That behavior was completely repulsive and gross.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "सब कुछ बहुत अच्छा चल रहा है।",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am furious at my teammate for lying to me.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "कोई भी मेरी बात नहीं समझता।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am feeling really low and sad today.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बात करने के लिए किसी की जरूरत है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I've been feeling extremely hopeless and burnt out at work.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "यह मेरे साथ बहुत गलत हुआ है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "भविष्य को लेकर मन में बहुत डर है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Hey Haven, kya chal raha hai?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel lonely and isolated from everyone.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "शांत रहने के लिए मुझे क्या करना चाहिए?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मेरा मन बहुत उदास है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel lonely and isolated from everyone.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My heart starts racing whenever I think about the future.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे उस पर बहुत गुस्सा आ रहा है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "परीक्षा को लेकर मुझे बहुत चिंता हो रही है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Awesome news bro! Exam clear ho gaya!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I get angry over minor things and lose my temper easily.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am terrified of failing my final interview.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I struggle with feelings of worthlessness and depression.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I struggle with feelings of worthlessness and depression.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so happy and relieved today.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मेरा मन बहुत उदास है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I have constant panic attacks when I am in public places.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Pata nahi kya chal raha hai, feeling very low today.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I lost my pet yesterday and I can't stop crying.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am feeling really low and sad today.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Awesome news bro! Exam clear ho gaya!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I got the job offer I was hoping for!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "भविष्य को लेकर मन में बहुत डर है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Koi mera saath nahi deta, depressed lag raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so anxious about my performance and I can't sleep.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बात करने के लिए किसी की जरूरत है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Exams are stressing me out a lot.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "यह मेरे साथ बहुत गलत हुआ है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am terrified of failing my final interview.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I can't believe this happened so suddenly!",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I passed my exam with top grades!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "It is so unfair how they treated me at work.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Exam pressure bahut jyada hai, anxiety ho rahi hai.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Kuch relaxation tips de sakte ho kya?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I hate it when people disrespect my boundaries.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel overwhelmed by all the workload.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "नमस्ते, आप कैसे हैं?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am terrified of failing my final interview.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so anxious about my performance and I can't sleep.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Nobody seems to understand what I'm going through.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "यह मेरे साथ बहुत गलत हुआ है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Dost ne dhokha diya, mujhe bahut gussa aa raha hai.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "What are some basic breathing exercises?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Can you suggest something to help me relax and calm down?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I've been feeling extremely hopeless and burnt out at work.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I have constant panic attacks when I am in public places.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "कोई भी मेरी बात नहीं समझता।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I struggle with feelings of worthlessness and depression.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel overwhelmed by all the workload.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "सब कुछ बहुत अच्छा चल रहा है।",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I've been feeling extremely hopeless and burnt out at work.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "नमस्ते, आप कैसे हैं?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Exams are stressing me out a lot.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "What are some basic breathing exercises?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My heart starts racing whenever I think about the future.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "What are effective coping strategies for social anxiety?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Hey Haven, kya chal raha hai?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My relationship is failing and I feel constant grief.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel overwhelmed by all the workload.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My heart starts racing whenever I think about the future.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I've been feeling extremely hopeless and burnt out at work.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My heart starts racing whenever I think about the future.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My heart starts racing whenever I think about the future.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मेरा मन बहुत उदास है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I get angry over minor things and lose my temper easily.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बात करने के लिए किसी की जरूरत है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Mind overthink kar raha hai, samjh nahi aa raha.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "How does sleep affect mental health?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "कोई भी मेरी बात नहीं समझता।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "परीक्षा को लेकर मुझे बहुत चिंता हो रही है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I need to vent about something that's been bothering me.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I get angry over minor things and lose my temper easily.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I need to vent about something that's been bothering me.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I hate it when people disrespect my boundaries.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am terrified of failing my final interview.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे उस पर बहुत गुस्सा आ रहा है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I need to vent about something that's been bothering me.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I passed my exam with top grades!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Aaj ka din bahut acha gaya, so happy!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Aaj bahut lonely feel ho raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Mind overthink kar raha hai, samjh nahi aa raha.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel ashamed of how I acted yesterday.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "सब कुछ बहुत अच्छा चल रहा है।",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am feeling really low and sad today.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am feeling really low and sad today.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Good morning, how are you today?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so anxious about my performance and I can't sleep.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "What are some basic breathing exercises?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am feeling really low and sad today.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Exams are stressing me out a lot.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मेरा मन बहुत उदास है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I get angry over minor things and lose my temper easily.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "सब कुछ बहुत अच्छा चल रहा है।",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I hate it when people disrespect my boundaries.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "That behavior was completely repulsive and gross.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "मुझे अकेलापन महसूस हो रहा है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Koi mera saath nahi deta, depressed lag raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "How can I manage intrusive thoughts and overthinking?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I passed my exam with top grades!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so happy and relieved today.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "That behavior was completely repulsive and gross.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "शांत रहने के लिए मुझे क्या करना चाहिए?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "परीक्षा को लेकर मुझे बहुत चिंता हो रही है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I've been feeling extremely hopeless and burnt out at work.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे उस पर बहुत गुस्सा आ रहा है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am furious at my teammate for lying to me.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Pata nahi kya chal raha hai, feeling very low today.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I lost my pet yesterday and I can't stop crying.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am furious at my teammate for lying to me.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Good morning, how are you today?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बात करने के लिए किसी की जरूरत है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Nobody seems to understand what I'm going through.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Had a great time spending the weekend with my friends.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I passed my exam with top grades!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Exam pressure bahut jyada hai, anxiety ho rahi hai.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I've been feeling extremely hopeless and burnt out at work.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Mujhe vent karna hai, thoda bura lag raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "नमस्ते, आप कैसे हैं?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Pata nahi kya chal raha hai, feeling very low today.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My heart starts racing whenever I think about the future.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "That behavior was completely repulsive and gross.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "परीक्षा को लेकर मुझे बहुत चिंता हो रही है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे उस पर बहुत गुस्सा आ रहा है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel ashamed of how I acted yesterday.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "It is so unfair how they treated me at work.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बहुत तनाव महसूस हो रहा है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे अकेलापन महसूस हो रहा है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Exams are stressing me out a lot.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel ashamed of how I acted yesterday.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "What are effective coping strategies for social anxiety?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Kuch relaxation tips de sakte ho kya?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Can you suggest something to help me relax and calm down?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "कोई भी मेरी बात नहीं समझता।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बहुत तनाव महसूस हो रहा है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बहुत तनाव महसूस हो रहा है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel ashamed of how I acted yesterday.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "I am having panic attacks before my presentations.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "What are effective coping strategies for social anxiety?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "नमस्ते, आप कैसे हैं?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I lost my pet yesterday and I can't stop crying.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel ashamed of how I acted yesterday.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "यह मेरे साथ बहुत गलत हुआ है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Can you suggest something to help me relax and calm down?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so anxious about my performance and I can't sleep.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "What are effective coping strategies for social anxiety?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे अकेलापन महसूस हो रहा है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My relationship is failing and I feel constant grief.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Exams are stressing me out a lot.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Dost ne dhokha diya, mujhe bahut gussa aa raha hai.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I got the job offer I was hoping for!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so happy and relieved today.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel overwhelmed by all the workload.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel lonely and isolated from everyone.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I have constant panic attacks when I am in public places.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "कोई भी मेरी बात नहीं समझता।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I can't believe this happened so suddenly!",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Aaj bahut lonely feel ho raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे अकेलापन महसूस हो रहा है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "शांत रहने के लिए मुझे क्या करना चाहिए?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Aaj ka din bahut acha gaya, so happy!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "सब कुछ बहुत अच्छा चल रहा है।",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "What are effective coping strategies for social anxiety?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Awesome news bro! Exam clear ho gaya!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "It is so unfair how they treated me at work.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मैं बहुत खुश हूँ, मेरा चयन हो गया!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I have constant panic attacks when I am in public places.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Awesome news bro! Exam clear ho gaya!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे उस पर बहुत गुस्सा आ रहा है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Good morning, how are you today?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Aaj bahut lonely feel ho raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "भविष्य को लेकर मन में बहुत डर है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I need to vent about something that's been bothering me.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My relationship is failing and I feel constant grief.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel overwhelmed by all the workload.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "परीक्षा को लेकर मुझे बहुत चिंता हो रही है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Mind overthink kar raha hai, samjh nahi aa raha.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Can you suggest something to help me relax and calm down?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Mujhe vent karna hai, thoda bura lag raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बात करने के लिए किसी की जरूरत है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मैं बहुत खुश हूँ, मेरा चयन हो गया!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मैं बहुत खुश हूँ, मेरा चयन हो गया!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so anxious about my performance and I can't sleep.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "भविष्य को लेकर मन में बहुत डर है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मैं बहुत खुश हूँ, मेरा चयन हो गया!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am having panic attacks before my presentations.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Good morning, how are you today?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Good morning, how are you today?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "What are some basic breathing exercises?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Can you suggest something to help me relax and calm down?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I have constant panic attacks when I am in public places.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बात करने के लिए किसी की जरूरत है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे अकेलापन महसूस हो रहा है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "सब कुछ बहुत अच्छा चल रहा है।",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel ashamed of how I acted yesterday.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "I passed my exam with top grades!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "भविष्य को लेकर मन में बहुत डर है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बात करने के लिए किसी की जरूरत है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "सब कुछ बहुत अच्छा चल रहा है।",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am furious at my teammate for lying to me.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "शांत रहने के लिए मुझे क्या करना चाहिए?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Result ko lekar tension ho rahi hai.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so happy and relieved today.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "What are effective coping strategies for social anxiety?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मेरा मन बहुत उदास है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बहुत तनाव महसूस हो रहा है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am terrified of failing my final interview.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे अकेलापन महसूस हो रहा है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "What are some basic breathing exercises?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे उस पर बहुत गुस्सा आ रहा है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "What are some basic breathing exercises?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Exam pressure bahut jyada hai, anxiety ho rahi hai.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am terrified of failing my final interview.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I struggle with feelings of worthlessness and depression.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "It is so unfair how they treated me at work.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I have constant panic attacks when I am in public places.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "How does sleep affect mental health?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "परीक्षा को लेकर मुझे बहुत चिंता हो रही है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मैं बहुत खुश हूँ, मेरा चयन हो गया!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "शांत रहने के लिए मुझे क्या करना चाहिए?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Result ko lekar tension ho rahi hai.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am terrified of failing my final interview.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Can you suggest something to help me relax and calm down?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बात करने के लिए किसी की जरूरत है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "यह मेरे साथ बहुत गलत हुआ है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel lonely and isolated from everyone.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I lost my pet yesterday and I can't stop crying.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Aaj bahut lonely feel ho raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "सब कुछ बहुत अच्छा चल रहा है।",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I've been feeling extremely hopeless and burnt out at work.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so happy and relieved today.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I can't believe this happened so suddenly!",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मैं बहुत खुश हूँ, मेरा चयन हो गया!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बात करने के लिए किसी की जरूरत है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मेरा मन बहुत उदास है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मैं बहुत खुश हूँ, मेरा चयन हो गया!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Exams are stressing me out a lot.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Mind overthink kar raha hai, samjh nahi aa raha.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "How can I manage intrusive thoughts and overthinking?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "It is so unfair how they treated me at work.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "नमस्ते, आप कैसे हैं?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am furious at my teammate for lying to me.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे अकेलापन महसूस हो रहा है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My relationship is failing and I feel constant grief.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so happy and relieved today.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I got the job offer I was hoping for!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "भविष्य को लेकर मन में बहुत डर है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Nobody seems to understand what I'm going through.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "सब कुछ बहुत अच्छा चल रहा है।",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Dost ne dhokha diya, mujhe bahut gussa aa raha hai.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Exams are stressing me out a lot.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "What are some basic breathing exercises?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "कोई भी मेरी बात नहीं समझता।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "कोई भी मेरी बात नहीं समझता।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "What are effective coping strategies for social anxiety?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel overwhelmed by all the workload.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am furious at my teammate for lying to me.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "How can I manage intrusive thoughts and overthinking?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am furious at my teammate for lying to me.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "नमस्ते, आप कैसे हैं?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Aaj ka din bahut acha gaya, so happy!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Pata nahi kya chal raha hai, feeling very low today.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे उस पर बहुत गुस्सा आ रहा है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "It is so unfair how they treated me at work.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "भविष्य को लेकर मन में बहुत डर है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "That behavior was completely repulsive and gross.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Can you suggest something to help me relax and calm down?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बहुत तनाव महसूस हो रहा है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "How can I manage intrusive thoughts and overthinking?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I can't believe this happened so suddenly!",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "कोई भी मेरी बात नहीं समझता।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "परीक्षा को लेकर मुझे बहुत चिंता हो रही है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "भविष्य को लेकर मन में बहुत डर है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am having panic attacks before my presentations.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Aaj ka din bahut acha gaya, so happy!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am furious at my teammate for lying to me.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Had a great time spending the weekend with my friends.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Can you suggest something to help me relax and calm down?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel overwhelmed by all the workload.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मेरा मन बहुत उदास है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Dost ne dhokha diya, mujhe bahut gussa aa raha hai.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मैं बहुत खुश हूँ, मेरा चयन हो गया!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "That behavior was completely repulsive and gross.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "How can I manage intrusive thoughts and overthinking?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "How can I manage intrusive thoughts and overthinking?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे उस पर बहुत गुस्सा आ रहा है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Had a great time spending the weekend with my friends.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My relationship is failing and I feel constant grief.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel lonely and isolated from everyone.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My heart starts racing whenever I think about the future.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे अकेलापन महसूस हो रहा है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I get angry over minor things and lose my temper easily.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Aaj ka din bahut acha gaya, so happy!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मैं बहुत खुश हूँ, मेरा चयन हो गया!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे अकेलापन महसूस हो रहा है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "How can I manage intrusive thoughts and overthinking?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मैं बहुत खुश हूँ, मेरा चयन हो गया!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Result ko lekar tension ho rahi hai.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel lonely and isolated from everyone.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My relationship is failing and I feel constant grief.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so anxious about my performance and I can't sleep.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Awesome news bro! Exam clear ho gaya!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am having panic attacks before my presentations.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I hate it when people disrespect my boundaries.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I got the job offer I was hoping for!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am having panic attacks before my presentations.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे उस पर बहुत गुस्सा आ रहा है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My relationship is failing and I feel constant grief.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I get angry over minor things and lose my temper easily.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मेरा मन बहुत उदास है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "यह मेरे साथ बहुत गलत हुआ है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I lost my pet yesterday and I can't stop crying.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I hate it when people disrespect my boundaries.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I've been feeling extremely hopeless and burnt out at work.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "What are effective coping strategies for social anxiety?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I need to vent about something that's been bothering me.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Hey Haven, kya chal raha hai?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "How does sleep affect mental health?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "How can I manage intrusive thoughts and overthinking?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I get angry over minor things and lose my temper easily.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Dost ne dhokha diya, mujhe bahut gussa aa raha hai.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "सब कुछ बहुत अच्छा चल रहा है।",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so happy and relieved today.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I can't believe this happened so suddenly!",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I can't believe this happened so suddenly!",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Kuch relaxation tips de sakte ho kya?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Had a great time spending the weekend with my friends.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Exams are stressing me out a lot.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My heart starts racing whenever I think about the future.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Nobody seems to understand what I'm going through.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Hey Haven, kya chal raha hai?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am furious at my teammate for lying to me.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel lonely and isolated from everyone.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am furious at my teammate for lying to me.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am feeling really low and sad today.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel ashamed of how I acted yesterday.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "मुझे बहुत तनाव महसूस हो रहा है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I lost my pet yesterday and I can't stop crying.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I've been feeling extremely hopeless and burnt out at work.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I got the job offer I was hoping for!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Aaj ka din bahut acha gaya, so happy!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "How does sleep affect mental health?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Mujhe vent karna hai, thoda bura lag raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Can you suggest something to help me relax and calm down?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "सब कुछ बहुत अच्छा चल रहा है।",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My heart starts racing whenever I think about the future.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "नमस्ते, आप कैसे हैं?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "How can I manage intrusive thoughts and overthinking?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "कोई भी मेरी बात नहीं समझता।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Mind overthink kar raha hai, samjh nahi aa raha.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Kuch relaxation tips de sakte ho kya?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I've been feeling extremely hopeless and burnt out at work.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "यह मेरे साथ बहुत गलत हुआ है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am having panic attacks before my presentations.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I need to vent about something that's been bothering me.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My heart starts racing whenever I think about the future.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I got the job offer I was hoping for!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Hey Haven, kya chal raha hai?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Result ko lekar tension ho rahi hai.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I can't believe this happened so suddenly!",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "It is so unfair how they treated me at work.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "कोई भी मेरी बात नहीं समझता।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मैं बहुत खुश हूँ, मेरा चयन हो गया!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel ashamed of how I acted yesterday.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Nobody seems to understand what I'm going through.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I can't believe this happened so suddenly!",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "भविष्य को लेकर मन में बहुत डर है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "What are some basic breathing exercises?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "How does sleep affect mental health?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "सब कुछ बहुत अच्छा चल रहा है।",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I got the job offer I was hoping for!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Nobody seems to understand what I'm going through.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Dost ne dhokha diya, mujhe bahut gussa aa raha hai.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am terrified of failing my final interview.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I lost my pet yesterday and I can't stop crying.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे अकेलापन महसूस हो रहा है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "शांत रहने के लिए मुझे क्या करना चाहिए?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बात करने के लिए किसी की जरूरत है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मैं बहुत खुश हूँ, मेरा चयन हो गया!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "It is so unfair how they treated me at work.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am having panic attacks before my presentations.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मेरा मन बहुत उदास है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Dost ne dhokha diya, mujhe bahut gussa aa raha hai.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am feeling really low and sad today.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "यह मेरे साथ बहुत गलत हुआ है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बहुत तनाव महसूस हो रहा है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I hate it when people disrespect my boundaries.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "What are some basic breathing exercises?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Kuch relaxation tips de sakte ho kya?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I can't believe this happened so suddenly!",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I passed my exam with top grades!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Can you suggest something to help me relax and calm down?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Dost ne dhokha diya, mujhe bahut gussa aa raha hai.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I passed my exam with top grades!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "How does sleep affect mental health?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Mind overthink kar raha hai, samjh nahi aa raha.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Had a great time spending the weekend with my friends.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Result ko lekar tension ho rahi hai.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "यह मेरे साथ बहुत गलत हुआ है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I get angry over minor things and lose my temper easily.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I lost my pet yesterday and I can't stop crying.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बहुत तनाव महसूस हो रहा है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Awesome news bro! Exam clear ho gaya!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Exams are stressing me out a lot.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "शांत रहने के लिए मुझे क्या करना चाहिए?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मेरा मन बहुत उदास है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I struggle with feelings of worthlessness and depression.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I struggle with feelings of worthlessness and depression.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I need to vent about something that's been bothering me.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel lonely and isolated from everyone.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "It is so unfair how they treated me at work.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Kuch relaxation tips de sakte ho kya?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मेरा मन बहुत उदास है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "यह मेरे साथ बहुत गलत हुआ है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "नमस्ते, आप कैसे हैं?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "शांत रहने के लिए मुझे क्या करना चाहिए?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "यह मेरे साथ बहुत गलत हुआ है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I hate it when people disrespect my boundaries.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे अकेलापन महसूस हो रहा है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "शांत रहने के लिए मुझे क्या करना चाहिए?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे अकेलापन महसूस हो रहा है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I passed my exam with top grades!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "नमस्ते, आप कैसे हैं?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "भविष्य को लेकर मन में बहुत डर है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे उस पर बहुत गुस्सा आ रहा है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I have constant panic attacks when I am in public places.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Dost ne dhokha diya, mujhe bahut gussa aa raha hai.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Aaj ka din bahut acha gaya, so happy!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Aaj ka din bahut acha gaya, so happy!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Koi mera saath nahi deta, depressed lag raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मैं बहुत खुश हूँ, मेरा चयन हो गया!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "भविष्य को लेकर मन में बहुत डर है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel lonely and isolated from everyone.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My relationship is failing and I feel constant grief.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "शांत रहने के लिए मुझे क्या करना चाहिए?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "नमस्ते, आप कैसे हैं?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel overwhelmed by all the workload.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मेरा मन बहुत उदास है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Result ko lekar tension ho rahi hai.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बहुत तनाव महसूस हो रहा है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Mujhe vent karna hai, thoda bura lag raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I've been feeling extremely hopeless and burnt out at work.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Exam pressure bahut jyada hai, anxiety ho rahi hai.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे उस पर बहुत गुस्सा आ रहा है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel lonely and isolated from everyone.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Hey Haven, kya chal raha hai?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Can you suggest something to help me relax and calm down?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "भविष्य को लेकर मन में बहुत डर है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "नमस्ते, आप कैसे हैं?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I have constant panic attacks when I am in public places.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "It is so unfair how they treated me at work.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so anxious about my performance and I can't sleep.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "That behavior was completely repulsive and gross.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Had a great time spending the weekend with my friends.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My heart starts racing whenever I think about the future.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so anxious about my performance and I can't sleep.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Hey Haven, kya chal raha hai?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Exam pressure bahut jyada hai, anxiety ho rahi hai.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Koi mera saath nahi deta, depressed lag raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बहुत तनाव महसूस हो रहा है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I passed my exam with top grades!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Had a great time spending the weekend with my friends.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे अकेलापन महसूस हो रहा है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I hate it when people disrespect my boundaries.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Pata nahi kya chal raha hai, feeling very low today.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so happy and relieved today.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so happy and relieved today.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Exam pressure bahut jyada hai, anxiety ho rahi hai.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I need to vent about something that's been bothering me.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I got the job offer I was hoping for!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बात करने के लिए किसी की जरूरत है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "कोई भी मेरी बात नहीं समझता।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "परीक्षा को लेकर मुझे बहुत चिंता हो रही है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Good morning, how are you today?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Had a great time spending the weekend with my friends.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I struggle with feelings of worthlessness and depression.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I lost my pet yesterday and I can't stop crying.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "कोई भी मेरी बात नहीं समझता।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बात करने के लिए किसी की जरूरत है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Kuch relaxation tips de sakte ho kya?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Koi mera saath nahi deta, depressed lag raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Result ko lekar tension ho rahi hai.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I have constant panic attacks when I am in public places.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "What are some basic breathing exercises?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I get angry over minor things and lose my temper easily.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Result ko lekar tension ho rahi hai.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "How does sleep affect mental health?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I struggle with feelings of worthlessness and depression.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I lost my pet yesterday and I can't stop crying.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "परीक्षा को लेकर मुझे बहुत चिंता हो रही है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "परीक्षा को लेकर मुझे बहुत चिंता हो रही है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I got the job offer I was hoping for!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे अकेलापन महसूस हो रहा है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel lonely and isolated from everyone.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Pata nahi kya chal raha hai, feeling very low today.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Good morning, how are you today?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Exams are stressing me out a lot.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I struggle with feelings of worthlessness and depression.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Kuch relaxation tips de sakte ho kya?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am having panic attacks before my presentations.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I hate it when people disrespect my boundaries.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "How can I manage intrusive thoughts and overthinking?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "नमस्ते, आप कैसे हैं?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My relationship is failing and I feel constant grief.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I can't believe this happened so suddenly!",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "What are effective coping strategies for social anxiety?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मेरा मन बहुत उदास है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "नमस्ते, आप कैसे हैं?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Aaj bahut lonely feel ho raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Hey Haven, kya chal raha hai?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "That behavior was completely repulsive and gross.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "I have constant panic attacks when I am in public places.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Aaj bahut lonely feel ho raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "यह मेरे साथ बहुत गलत हुआ है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Mind overthink kar raha hai, samjh nahi aa raha.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am terrified of failing my final interview.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "शांत रहने के लिए मुझे क्या करना चाहिए?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Nobody seems to understand what I'm going through.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am feeling really low and sad today.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My relationship is failing and I feel constant grief.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे उस पर बहुत गुस्सा आ रहा है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Can you suggest something to help me relax and calm down?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Dost ne dhokha diya, mujhe bahut gussa aa raha hai.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I get angry over minor things and lose my temper easily.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "What are effective coping strategies for social anxiety?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I hate it when people disrespect my boundaries.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "How can I manage intrusive thoughts and overthinking?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am furious at my teammate for lying to me.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बहुत तनाव महसूस हो रहा है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am furious at my teammate for lying to me.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "नमस्ते, आप कैसे हैं?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am having panic attacks before my presentations.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am feeling really low and sad today.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बात करने के लिए किसी की जरूरत है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I've been feeling extremely hopeless and burnt out at work.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel ashamed of how I acted yesterday.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Aaj bahut lonely feel ho raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Aaj bahut lonely feel ho raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "परीक्षा को लेकर मुझे बहुत चिंता हो रही है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so happy and relieved today.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel overwhelmed by all the workload.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "भविष्य को लेकर मन में बहुत डर है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I get angry over minor things and lose my temper easily.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "शांत रहने के लिए मुझे क्या करना चाहिए?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Mujhe vent karna hai, thoda bura lag raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Nobody seems to understand what I'm going through.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Exam pressure bahut jyada hai, anxiety ho rahi hai.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I need to vent about something that's been bothering me.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे उस पर बहुत गुस्सा आ रहा है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Awesome news bro! Exam clear ho gaya!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Kuch relaxation tips de sakte ho kya?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Koi mera saath nahi deta, depressed lag raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Kuch relaxation tips de sakte ho kya?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Pata nahi kya chal raha hai, feeling very low today.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I hate it when people disrespect my boundaries.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am having panic attacks before my presentations.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मेरा मन बहुत उदास है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I need to vent about something that's been bothering me.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे अकेलापन महसूस हो रहा है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "परीक्षा को लेकर मुझे बहुत चिंता हो रही है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बहुत तनाव महसूस हो रहा है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "यह मेरे साथ बहुत गलत हुआ है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I need to vent about something that's been bothering me.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Exam pressure bahut jyada hai, anxiety ho rahi hai.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Result ko lekar tension ho rahi hai.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Good morning, how are you today?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I got the job offer I was hoping for!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I got the job offer I was hoping for!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I can't believe this happened so suddenly!",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "परीक्षा को लेकर मुझे बहुत चिंता हो रही है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मैं बहुत खुश हूँ, मेरा चयन हो गया!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I have constant panic attacks when I am in public places.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Hey Haven, kya chal raha hai?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Mind overthink kar raha hai, samjh nahi aa raha.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "शांत रहने के लिए मुझे क्या करना चाहिए?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "कोई भी मेरी बात नहीं समझता।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I have constant panic attacks when I am in public places.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "शांत रहने के लिए मुझे क्या करना चाहिए?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Koi mera saath nahi deta, depressed lag raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Good morning, how are you today?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Result ko lekar tension ho rahi hai.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I passed my exam with top grades!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Had a great time spending the weekend with my friends.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मैं बहुत खुश हूँ, मेरा चयन हो गया!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "सब कुछ बहुत अच्छा चल रहा है।",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "यह मेरे साथ बहुत गलत हुआ है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "How does sleep affect mental health?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel lonely and isolated from everyone.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Mujhe vent karna hai, thoda bura lag raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "What are some basic breathing exercises?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Nobody seems to understand what I'm going through.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Had a great time spending the weekend with my friends.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "आज मेरा मन बहुत उदास है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Nobody seems to understand what I'm going through.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Hey Haven, kya chal raha hai?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My heart starts racing whenever I think about the future.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "How does sleep affect mental health?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel overwhelmed by all the workload.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am feeling really low and sad today.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "परीक्षा को लेकर मुझे बहुत चिंता हो रही है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "It is so unfair how they treated me at work.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "परीक्षा को लेकर मुझे बहुत चिंता हो रही है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "शांत रहने के लिए मुझे क्या करना चाहिए?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I struggle with feelings of worthlessness and depression.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Awesome news bro! Exam clear ho gaya!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बहुत तनाव महसूस हो रहा है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I passed my exam with top grades!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Aaj ka din bahut acha gaya, so happy!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am terrified of failing my final interview.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so happy and relieved today.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I get angry over minor things and lose my temper easily.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am having panic attacks before my presentations.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "What are effective coping strategies for social anxiety?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My relationship is failing and I feel constant grief.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I hate it when people disrespect my boundaries.",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "कोई भी मेरी बात नहीं समझता।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Mujhe vent karna hai, thoda bura lag raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Aaj ka din bahut acha gaya, so happy!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I struggle with feelings of worthlessness and depression.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Awesome news bro! Exam clear ho gaya!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so happy and relieved today.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Exams are stressing me out a lot.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am terrified of failing my final interview.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so anxious about my performance and I can't sleep.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I struggle with feelings of worthlessness and depression.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I lost my pet yesterday and I can't stop crying.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Pata nahi kya chal raha hai, feeling very low today.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Had a great time spending the weekend with my friends.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Mind overthink kar raha hai, samjh nahi aa raha.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Exam pressure bahut jyada hai, anxiety ho rahi hai.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel overwhelmed by all the workload.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "नमस्ते, आप कैसे हैं?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I got the job offer I was hoping for!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बात करने के लिए किसी की जरूरत है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "That behavior was completely repulsive and gross.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "मुझे उस पर बहुत गुस्सा आ रहा है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "सब कुछ बहुत अच्छा चल रहा है।",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel overwhelmed by all the workload.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so anxious about my performance and I can't sleep.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Koi mera saath nahi deta, depressed lag raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am feeling really low and sad today.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I passed my exam with top grades!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Nobody seems to understand what I'm going through.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "भविष्य को लेकर मन में बहुत डर है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel ashamed of how I acted yesterday.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Exam pressure bahut jyada hai, anxiety ho rahi hai.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "What are some basic breathing exercises?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Good morning, how are you today?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "That behavior was completely repulsive and gross.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Awesome news bro! Exam clear ho gaya!",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Good morning, how are you today?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Pata nahi kya chal raha hai, feeling very low today.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Nobody seems to understand what I'm going through.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "My relationship is failing and I feel constant grief.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Good morning, how are you today?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Pata nahi kya chal raha hai, feeling very low today.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "यह मेरे साथ बहुत गलत हुआ है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I need to vent about something that's been bothering me.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बहुत तनाव महसूस हो रहा है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Koi mera saath nahi deta, depressed lag raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Aaj bahut lonely feel ho raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I am having panic attacks before my presentations.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "सब कुछ बहुत अच्छा चल रहा है।",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "What are effective coping strategies for social anxiety?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Mujhe vent karna hai, thoda bura lag raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे बात करने के लिए किसी की जरूरत है।",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so anxious about my performance and I can't sleep.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "That behavior was completely repulsive and gross.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "That behavior was completely repulsive and gross.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "I feel ashamed of how I acted yesterday.",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "I am feeling really low and sad today.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "मुझे उस पर बहुत गुस्सा आ रहा है।",
+    "labels": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Mujhe vent karna hai, thoda bura lag raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "How does sleep affect mental health?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "भविष्य को लेकर मन में बहुत डर है।",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Exams are stressing me out a lot.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I feel so anxious about my performance and I can't sleep.",
+    "labels": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "I lost my pet yesterday and I can't stop crying.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "How can I manage intrusive thoughts and overthinking?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "How does sleep affect mental health?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "How does sleep affect mental health?",
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Had a great time spending the weekend with my friends.",
+    "labels": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Koi mera saath nahi deta, depressed lag raha hai.",
+    "labels": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+]

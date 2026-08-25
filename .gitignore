@@ -1,0 +1,28 @@
+# Secrets
+backend/.env
+.env
+
+# Large Models (Using Git LFS)
+# backend/muril_emotion_model.pth
+
+# Databases
+backend/myhaven.db
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Logs & Analytics
+backend/mood_history.csv
+backend/mindmate_analytics.json
+backend/local_tokenizer/
+*.log
