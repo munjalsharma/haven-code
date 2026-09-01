@@ -27,31 +27,29 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse, HTMLResponse
 from pydantic import BaseModel, Field
- 
 try:
     from dotenv import load_dotenv
+    _backend_dir = os.path.dirname(os.path.abspath(__file__))
+    load_dotenv(os.path.join(_backend_dir, ".env"))
+    load_dotenv(os.path.join(os.path.dirname(_backend_dir), ".env"))
     load_dotenv()
 except Exception:
     pass
- 
-# Add this near the top of main.py, after existing imports
-from mindmate_integration import MindMateSentimentAnalyzer
- 
-# Initialize the analyzer (do this once globally, outside any function)
-print("[MindMate] Loading sentiment analyzer...")
-mindmate_analyzer = MindMateSentimentAnalyzer(model_path="muril_emotion_model.pth")
-_head_loaded = mindmate_analyzer.weights_loaded
-print("[MindMate] SUCCESS: Analyzer ready!")
-# ══════════════════════════════════════════════════════════════════════════════
-# CONFIG
-# ══════════════════════════════════════════════════════════════════════════════
- 
-GROQ_API_KEY = os.getenv("GROQ_API_KEY", "").strip()
-GROQ_MODEL   = os.getenv("GROQ_MODEL", "groq/compound-mini").strip()
+
+# Helper to dynamically get GROQ_API_KEY
+def get_groq_api_key() -> str:
+    return os.getenv("GROQ_API_KEY", "").strip()
+
+# Helper to dynamically get GROQ_MODEL (fallback to valid Groq model)
+def get_groq_model() -> str:
+    model = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile").strip()
+    if not model or "compound-mini" in model or model.startswith("groq/"):
+        return "llama-3.3-70b-versatile"
+    return model
 
 # Admin access key - set this in your .env file
 HAVEN_ADMIN_KEY = os.getenv("HAVEN_ADMIN_KEY", "haven_master_2026").strip()
- 
+
 MAX_TURNS = 30
  
 # DB paths
@@ -556,59 +554,67 @@ _groq_client = None
  
 def get_groq():
     global _groq_client
+    api_key = get_groq_api_key()
+    if not api_key:
+        return None
     if _groq_client is None:
         from groq import Groq
-        _groq_client = Groq(api_key=GROQ_API_KEY)
+        _groq_client = Groq(api_key=api_key)
     return _groq_client
- 
- 
+
+
 def _is_crisis(text: str) -> bool:
     tl = (text or "").lower()
     return any(w in tl for w in CRISIS_WORDS)
- 
- 
+
+
 def groq_chat(user_id: str, user_message: str, persona_hint: str = "") -> str:
-    if not GROQ_API_KEY:
-        return "⚠️ GROQ_API_KEY missing. Add it to backend/.env and restart."
- 
+    api_key = get_groq_api_key()
+    if not api_key:
+        return "⚠️ GROQ_API_KEY missing. Please add GROQ_API_KEY to your Vercel Environment Variables or backend/.env file."
+
     crisis = _is_crisis(user_message)
- 
+
     # 1. Load user context from DB
     ctx = db_get_user(user_id)
- 
+
     # 2. Extract new context from this message and update ctx
     ctx = extract_context_from_message(user_message, ctx)
- 
+
     # 3. Save updated context back to DB
     db_upsert_user(user_id, ctx)
- 
+
     # 4. Save the user message to DB
     db_add_message(user_id, "user", user_message)
- 
+
     # 5. Load conversation history from DB
     history = db_get_messages(user_id, limit=MAX_TURNS)
- 
+
     # 6. Build system prompt with current context
     system_prompt = build_system_prompt(ctx, crisis=crisis)
     # Inject persona hint if provided
     if persona_hint:
         system_prompt += f"\n\nPERSONA OVERRIDE:\n{persona_hint}"
     messages = [{"role": "system", "content": system_prompt}] + history
- 
+
     # 7. Call Groq
     try:
-        r = get_groq().chat.completions.create(
-            model=GROQ_MODEL, messages=messages,
+        client = get_groq()
+        if not client:
+            return "⚠️ GROQ_API_KEY missing. Please add GROQ_API_KEY to your Vercel Environment Variables or backend/.env file."
+        model_name = get_groq_model()
+        r = client.chat.completions.create(
+            model=model_name, messages=messages,
             temperature=0.85, max_tokens=260, top_p=0.95
         )
         reply = r.choices[0].message.content.strip()
     except Exception as e:
-        print(f"[Groq] {e}")
+        print(f"[Groq Error] {e}")
         reply = "I got a little glitchy — could you say that again?"
- 
+
     # 8. Save assistant reply to DB
     db_add_message(user_id, "assistant", reply)
- 
+
     return reply
  
  
@@ -800,11 +806,11 @@ def health():
     return {
         "ok": True,
         "time": time.time(),
-        "groq_model": GROQ_MODEL,
+        "groq_model": get_groq_model(),
         "muril_loaded": _head_loaded,
-        "api_key_set": bool(GROQ_API_KEY),
+        "api_key_set": bool(get_groq_api_key()),
         "db_path": DB_PATH,
-        "version": "6.1" # Incremented for Admin Dashboard
+        "version": "6.1"
     }
 
 
