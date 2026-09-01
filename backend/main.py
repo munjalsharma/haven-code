@@ -66,7 +66,12 @@ if not os.path.exists(DB_DIR):
     except Exception as e:
         print(f"[DB] ⚠️ Could not create DB_DIR: {e}")
 
+_postgres_working = None
+
 def is_postgres():
+    global _postgres_working
+    if _postgres_working is not None:
+        return _postgres_working
     return bool(DATABASE_URL)
 
 def get_placeholder():
@@ -86,32 +91,33 @@ INDIA_KIRAN = "9152987821 (Kiran · Free · 24/7)"
 # ══════════════════════════════════════════════════════════════════════════════
  
 def get_db_connection():
-    if is_postgres():
-        if not psycopg2:
-            raise ImportError("psycopg2-binary is required for PostgreSQL support.")
-        
+    global _postgres_working
+    if DATABASE_URL and psycopg2 and _postgres_working is not False:
         url = DATABASE_URL
         if "supabase.co" in url or "supabase.com" in url:
             if "sslmode=" not in url:
                 separator = "&" if "?" in url else "?"
                 url += f"{separator}sslmode=require"
-        
         try:
-            return psycopg2.connect(url)
+            conn = psycopg2.connect(url)
+            _postgres_working = True
+            return conn
         except Exception as e:
             print(f"[DB] Postgres connection failed: {e}")
             print("[DB] Falling back to SQLite for this session.")
-            # Do NOT raise e, fall through to SQLite
-            
+            _postgres_working = False
+
     conn = sqlite3.connect(DB_PATH, check_same_thread=False)
     conn.row_factory = sqlite3.Row
+    _postgres_working = False
     return conn
- 
+
 @contextmanager
 def get_db():
     conn = get_db_connection()
+    is_pg = is_postgres()
     try:
-        if is_postgres():
+        if is_pg:
             cur = conn.cursor(cursor_factory=RealDictCursor)
             yield cur
         else:
@@ -133,6 +139,13 @@ def db_execute(conn_or_cur, query, params=None):
  
 def init_db():
     """Create tables if they don't exist. Safe to call multiple times."""
+    # Attempt DB connection to establish engine
+    try:
+        conn_test = get_db_connection()
+        conn_test.close()
+    except Exception:
+        pass
+
     is_pg = is_postgres()
     
     # Common table strings with minor syntax variations
