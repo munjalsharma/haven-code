@@ -56,7 +56,9 @@ MAX_TURNS = 30
  
 # DB paths
 DATABASE_URL = os.getenv("DATABASE_URL", "").strip() # For Supabase
-DB_DIR = os.getenv("DB_DIR", os.path.dirname(os.path.abspath(__file__)))
+is_vercel = bool(os.getenv("VERCEL") or os.getenv("AWS_LAMBDA_FUNCTION_NAME"))
+default_db_dir = "/tmp" if is_vercel else os.path.dirname(os.path.abspath(__file__))
+DB_DIR = os.getenv("DB_DIR", default_db_dir)
 DB_PATH = os.path.join(DB_DIR, "myhaven.db")
 
 # Ensure the database directory exists (important for persistent disks)
@@ -99,8 +101,8 @@ def get_db_connection():
         try:
             return psycopg2.connect(url)
         except Exception as e:
-            print(f"[DB] ❌ Postgres connection failed: {e}")
-            print("[DB] ⚠️ Falling back to SQLite for this session.")
+            print(f"[DB] Postgres connection failed: {e}")
+            print("[DB] Falling back to SQLite for this session.")
             # Do NOT raise e, fall through to SQLite
             
     conn = sqlite3.connect(DB_PATH, check_same_thread=False)
@@ -204,9 +206,9 @@ def init_db():
             conn.execute("CREATE INDEX IF NOT EXISTS idx_messages_user_id ON messages(user_id);")
             conn.execute("CREATE INDEX IF NOT EXISTS idx_diary_user_id ON diary_entries(user_id);")
                 
-        print(f"[DB] ✅ Database ready ({'Postgres' if is_pg else 'SQLite'})")
+        print(f"[DB] Database ready ({'Postgres' if is_pg else 'SQLite'})")
     except Exception as e:
-        print(f"[DB] ⚠️ Startup DB initialization skipped/failed: {e}")
+        print(f"[DB] Startup DB initialization skipped/failed: {e}")
         print("[DB] App will attempt to continue with local SQLite if possible.")
  
  

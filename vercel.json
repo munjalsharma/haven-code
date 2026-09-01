@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/start", "destination": "/api/index.py" },
+    { "source": "/chat", "destination": "/api/index.py" },
+    { "source": "/set_name", "destination": "/api/index.py" },
+    { "source": "/reset", "destination": "/api/index.py" },
+    { "source": "/full_reset", "destination": "/api/index.py" },
+    { "source": "/history/(.*)", "destination": "/api/index.py" },
+    { "source": "/diary/(.*)", "destination": "/api/index.py" },
+    { "source": "/health", "destination": "/api/index.py" },
+    { "source": "/admin(.*)", "destination": "/api/index.py" }
+  ]
+}

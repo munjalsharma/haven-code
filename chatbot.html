@@ -595,7 +595,38 @@
 
 <!-- ══════════════════════════ JAVASCRIPT ══════════════════════════ -->
 <script>
-const BACKEND  = "http://127.0.0.1:8000";
+function getBackendUrl() {
+    const saved = localStorage.getItem("myhaven_backend_url");
+    if (saved && saved.trim()) {
+        return saved.trim().replace(/\/$/, "");
+    }
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has("backend")) {
+        const paramUrl = urlParams.get("backend").trim().replace(/\/$/, "");
+        localStorage.setItem("myhaven_backend_url", paramUrl);
+        return paramUrl;
+    }
+    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.protocol === "file:") {
+        return "http://127.0.0.1:8000";
+    }
+    // Live host (Vercel): use relative path (same origin serverless endpoint)
+    return "";
+}
+
+function configureBackendUrl() {
+    const current = localStorage.getItem("myhaven_backend_url") || (BACKEND === "" ? "Same Origin (Vercel)" : BACKEND);
+    const input = prompt("Enter Backend API Base URL (leave empty for automatic Vercel / Localhost detection):", current.includes("Same Origin") ? "" : current);
+    if (input !== null) {
+        if (input.trim() === "") {
+            localStorage.removeItem("myhaven_backend_url");
+        } else {
+            localStorage.setItem("myhaven_backend_url", input.trim().replace(/\/$/, ""));
+        }
+        window.location.reload();
+    }
+}
+
+let BACKEND = getBackendUrl();
 
 let USER_ID = localStorage.getItem("myhaven_user_id");
 if (!USER_ID) {
