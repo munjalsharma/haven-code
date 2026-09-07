@@ -845,33 +845,40 @@ def export_diary_csv(user_id: str):
 @app.get("/")
 def root():
     """Root endpoint for status check (Render / Cloud status)."""
-    return {
-        "status": "online",
-        "service": "MyHaven Backend API",
-        "version": "6.1",
-        "database": "Postgres (Supabase)" if is_postgres() else "SQLite",
-        "groq_api_key_set": bool(get_groq_api_key()),
-        "endpoints": {
-            "health": "/health",
-            "admin": "/admin",
-            "docs": "/docs"
+    try:
+        return {
+            "status": "online",
+            "service": "MyHaven Backend API",
+            "version": "6.1",
+            "database": "Postgres (Supabase)" if is_postgres() else "SQLite",
+            "groq_api_key_set": bool(get_groq_api_key()),
+            "endpoints": {
+                "health": "/health",
+                "admin": "/admin",
+                "docs": "/docs"
+            }
         }
-    }
+    except Exception as e:
+        return {"status": "error", "error": str(e)}
 
 
 @app.get("/health")
 def health():
     """Check backend status."""
-    return {
-        "ok": True,
-        "time": time.time(),
-        "groq_model": get_groq_model(),
-        "muril_loaded": _head_loaded,
-        "api_key_set": bool(get_groq_api_key()),
-        "database": "Postgres (Supabase)" if is_postgres() else "SQLite",
-        "db_path": DB_PATH if not is_postgres() else "Supabase Connection Pooler",
-        "version": "6.1"
-    }
+    try:
+        return {
+            "ok": True,
+            "time": time.time(),
+            "groq_model": get_groq_model(),
+            "muril_loaded": globals().get("_head_loaded", False),
+            "api_key_set": bool(get_groq_api_key()),
+            "database": "Postgres (Supabase)" if is_postgres() else "SQLite",
+            "db_path": DB_PATH if not is_postgres() else "Supabase Connection Pooler",
+            "version": "6.1"
+        }
+    except Exception as e:
+        return {"ok": False, "error": str(e), "type": type(e).__name__}
+
 
 
 
