@@ -1,64 +1,93 @@
-# 🚀 100% Free Hosting Guide (Individual Dev Strategy)
+# 🚀 100% Free Hosting & Deployment Guide (Render + Supabase + Vercel + Local)
 
-This guide explains how to host your 1.6 GB AI model and your persistent database for **$0 per month**.
+This guide explains how to host your **Haven AI Chatbot** with **Render** (Backend API), **Supabase** (PostgreSQL Database), **Vercel** (Frontend Website), and **Local Development**.
 
 ---
 
 ## 🏗️ Step 1: Set up the Database (Supabase)
-To keep user chats forever even when the server restarts, we use Supabase (PostgreSQL).
+Supabase provides free PostgreSQL database hosting so user conversations and context persist forever across restarts.
 
-1.  **Sign up**: Go to [supabase.com](https://supabase.com/) and create a free account.
-2.  **New Project**: Create a new project named `Haven`.
-3.  **Get Connection String (IMPORTANT for Hugging Face)**:
-    -   Go to **Settings** > **Database**.
-    -   Scroll down to the **Connection Pooler** section.
-    -   Toggle **Enable Connection Pooler** to **ON**.
-    -   Set the **Mode** to **Transaction**.
-    -   Find your **Connection string** (URI). It looks like this:
-        `postgresql://postgres:[PASSWORD]@aws-0-[region].pooler.supabase.com:6543/postgres`
-    -   **Copy this** (replace `[PASSWORD]` with your actual database password).
-4.  **Save this URL**: You will need it in Step 2.
+1. **Sign up**: Go to [supabase.com](https://supabase.com/) and create a free account.
+2. **New Project**: Create a new project named `Haven`.
+3. **Get Connection String**:
+   - Go to **Project Settings** > **Database**.
+   - Scroll to **Connection Pooler** section.
+   - Set **Mode** to **Transaction** (port `6543`).
+   - Copy the **Connection string (URI)**:
+     `postgresql://postgres:[YOUR-PASSWORD]@aws-0-[region].pooler.supabase.com:6543/postgres`
+   - Replace `[YOUR-PASSWORD]` with your database password.
 
 ---
 
-## 🧠 Step 2: Set up the Backend (Hugging Face Spaces)
-Hugging Face is the only platform that gives you **16 GB of RAM** for free.
+## 🧠 Step 2: Set up the Backend (Render)
+Render provides free web service hosting for Python FastAPI servers.
 
-1.  **Sign up**: Go to [huggingface.co](https://huggingface.co/) and create a free account.
-2.  **Create New Space**:
-    -   **Space name**: `haven-backend`
-    -   **SDK**: Select **Docker** (Blank template).
-    -   **Visibility**: Public (Free tier).
-3.  **Environment Variables**:
-    -   Go to **Settings** > **Variables and secrets**.
-    -   Add **New Secret**:
-        -   Name: `DATABASE_URL`
-        -   Value: Your Supabase URI from Step 1.
-    -   Add **New Secret**:
-        -   Name: `GROQ_API_KEY`
-        -   Value: Your Groq API Key.
-4.  **Upload the Code**:
-    -   Connect your GitHub repository (`haven-code`) to the Space.
-    -   Or just `git push` your local files to the Hugging Face remote.
-5.  **Wait for Build**: Hugging Face will automatically build your Docker container. Once it says "Running," your backend is live!
+1. **Sign up**: Go to [render.com](https://render.com/) and link your GitHub account.
+2. **New Web Service**: Click **New +** > **Web Service**.
+3. **Connect Repository**: Select your GitHub repo `haven-code`.
+4. **Configuration**:
+   - **Name**: `myhaven-backend`
+   - **Region**: Choose closest to your target users (e.g., Singapore, Frankfurt, Oregon).
+   - **Root Directory**: Leave blank (or `backend` if deploying only backend subfolder).
+   - **Runtime**: `Python 3`
+   - **Build Command**: `pip install -r requirements.txt`
+   - **Start Command**: `uvicorn backend.main:app --host 0.0.0.0 --port $PORT` (or `cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT`)
+5. **Environment Variables**:
+   Add the following under **Environment Variables**:
+   - `GROQ_API_KEY`: Your Groq API key (from [console.groq.com](https://console.groq.com/))
+   - `DATABASE_URL`: Your Supabase connection string from Step 1.
+   - `HAVEN_ADMIN_KEY`: (Optional) Custom password for your admin panel.
+6. **Deploy**: Click **Create Web Service**. Once deployed, copy your service URL (e.g. `https://myhaven-backend.onrender.com`).
 
 ---
 
 ## 🌐 Step 3: Set up the Frontend (Vercel)
-1.  **Sign up**: Go to [vercel.com](https://vercel.com/) and link your GitHub.
-2.  **Import Repo**: Select `haven-code`.
-3.  **Settings**:
-    -   Vercel will detect it as a static site.
-4.  **Update API URL**:
-    -   In your `chatbot.html` code, make sure the `API_BASE_URL` points to your Hugging Face Space URL.
-    -   Example: `https://[YOUR_USERNAME]-haven-backend.hf.space`
-5.  **Deploy**: Click Deploy.
+Vercel hosts the web frontend with lightning speed.
+
+1. **Sign up**: Go to [vercel.com](https://vercel.com/) and import your `haven-code` GitHub repo.
+2. **Configure Backend URL**:
+   - Open `config.js` in your repo before pushing, and set:
+     ```javascript
+     window.HAVEN_CONFIG = {
+         BACKEND_URL: "https://myhaven-backend.onrender.com"
+     };
+     ```
+   - Alternatively, users can set the Render URL inside the app by clicking **⚙️ Server Settings** in the header.
+3. **Deploy**: Click **Deploy**. Your frontend is now live at `https://your-app.vercel.app`!
 
 ---
 
-## ⚡ Summary of URLs
-- **Backend (AI)**: `https://huggingface.co/spaces/[username]/haven-backend`
-- **Database**: `https://supabase.com/dashboard/project/[id]`
-- **Frontend (Web)**: `https://haven-code.vercel.app`
+## 💻 Step 4: Run Locally (Local Development)
 
-**You are now officially a cloud developer! 🚀**
+You can run Haven completely on your computer with local SQLite database fallback:
+
+1. **Clone & Setup Environment**:
+   ```bash
+   git clone https://github.com/your-username/haven-code.git
+   cd haven-code
+   ```
+2. **Set up `.env`**:
+   Create a `.env` file inside `backend/`:
+   ```env
+   GROQ_API_KEY=your_groq_api_key_here
+   HAVEN_ADMIN_KEY=haven_master_2026
+   ```
+3. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. **Start Backend**:
+   ```bash
+   cd backend
+   python -m uvicorn main:app --reload --port 8000
+   ```
+5. **Open Frontend**:
+   Open `chatbot.html` or `index.html` in your browser. The frontend auto-detects `http://127.0.0.1:8000` automatically!
+
+---
+
+## ⚡ Summary of Live URLs
+- **Backend API**: `https://myhaven-backend.onrender.com`
+- **Backend Health Check**: `https://myhaven-backend.onrender.com/health`
+- **Database Dashboard**: `https://supabase.com/dashboard`
+- **Frontend App**: `https://your-app.vercel.app`

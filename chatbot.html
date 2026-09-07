@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=container-queries"></script>
+<script src="config.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -323,6 +324,10 @@
                 <span class="material-symbols-outlined text-[18px] md:text-[15px]">refresh</span>
                 <span class="hidden md:inline">New Chat</span>
             </button>
+            <button type="button" onclick="configureBackendUrl()" title="Configure Server Backend URL" class="flex items-center justify-center md:gap-1.5 size-9 md:w-auto md:px-3 h-9 bg-gray-100 dark:bg-[#242447] hover:bg-primary/10 dark:hover:bg-[#5b4cf5]/20 text-gray-700 dark:text-gray-200 text-xs font-semibold rounded-full transition-colors border border-gray-200 dark:border-white/5">
+                <span class="material-symbols-outlined text-[18px] md:text-[15px]">dns</span>
+                <span class="hidden md:inline">Server URL</span>
+            </button>
             <button type="button" onclick="toggleTheme()" class="flex items-center justify-center size-9 bg-gray-100 dark:bg-[#242447] hover:bg-gray-200 dark:hover:bg-[#5b4cf5]/20 text-gray-500 dark:text-gray-300 rounded-full transition-colors">
                 <span class="material-symbols-outlined text-[18px]">dark_mode</span>
             </button>
@@ -596,31 +601,46 @@
 <!-- ══════════════════════════ JAVASCRIPT ══════════════════════════ -->
 <script>
 function getBackendUrl() {
+    // 1. localStorage override
     const saved = localStorage.getItem("myhaven_backend_url");
     if (saved && saved.trim()) {
         return saved.trim().replace(/\/$/, "");
     }
+    // 2. URL parameter ?backend=...
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has("backend")) {
         const paramUrl = urlParams.get("backend").trim().replace(/\/$/, "");
         localStorage.setItem("myhaven_backend_url", paramUrl);
         return paramUrl;
     }
+    // 3. window.HAVEN_CONFIG.BACKEND_URL (ignoring default placeholder template)
+    if (window.HAVEN_CONFIG && window.HAVEN_CONFIG.BACKEND_URL && window.HAVEN_CONFIG.BACKEND_URL.trim()) {
+        const cfgUrl = window.HAVEN_CONFIG.BACKEND_URL.trim().replace(/\/$/, "");
+        if (!cfgUrl.includes("<your-render-app>") && !cfgUrl.includes("<your-service-name>")) {
+            return cfgUrl;
+        }
+    }
+    // 4. Localhost auto-detection
     if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.protocol === "file:") {
         return "http://127.0.0.1:8000";
     }
-    // Live host (Vercel): use relative path (same origin serverless endpoint)
+    // 5. Live host (Vercel): fallback to relative path
     return "";
 }
 
 function configureBackendUrl() {
-    const current = localStorage.getItem("myhaven_backend_url") || (BACKEND === "" ? "Same Origin (Vercel)" : BACKEND);
-    const input = prompt("Enter Backend API Base URL (leave empty for automatic Vercel / Localhost detection):", current.includes("Same Origin") ? "" : current);
+    const current = localStorage.getItem("myhaven_backend_url") || (window.HAVEN_CONFIG?.BACKEND_URL || (BACKEND === "" ? "Same Origin (Vercel)" : BACKEND));
+    const cleanCurrent = (current.includes("<your-") || current.includes("Same Origin")) ? "" : current;
+    const input = prompt("⚙️ Server Connection Settings\n\nEnter your Render Backend API URL (e.g., https://myhaven-backend.onrender.com):\n(Leave empty to use automatic Vercel / Localhost detection)", cleanCurrent);
     if (input !== null) {
         if (input.trim() === "") {
             localStorage.removeItem("myhaven_backend_url");
         } else {
-            localStorage.setItem("myhaven_backend_url", input.trim().replace(/\/$/, ""));
+            let cleanUrl = input.trim().replace(/\/$/, "");
+            if (!cleanUrl.startsWith("http://") && !cleanUrl.startsWith("https://")) {
+                cleanUrl = "https://" + cleanUrl;
+            }
+            localStorage.setItem("myhaven_backend_url", cleanUrl);
         }
         window.location.reload();
     }
@@ -704,21 +724,48 @@ function skipOnboarding() {
 
 async function startSession() {
     sessionStorage.setItem("haven_session_started", "1");
-    setStatus("Haven is connecting\u2026");
-    try {
-        const res  = await fetch(`${BACKEND}/start`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({user_id:USER_ID})});
-        const data = await res.json();
-        
-        // If name exists in backend but not local, sync it
-        if (data.user_name && !localStorage.getItem("myhaven_user_name")) {
-            localStorage.setItem("myhaven_user_name", data.user_name);
-            document.getElementById("profile-name").textContent = data.user_name;
-        }
+    setStatus("Haven is connecting…");
+    
+    let isConnected = false;
+    let attempts = 0;
+    const maxAttempts = 5;
+    
+    while (!isConnected && attempts < maxAttempts) {
+        attempts++;
+        try {
+            if (attempts > 1) {
+                setStatus(`⚡ Server is waking up (Render cold start)... Please wait (${attempts}/${maxAttempts})`);
+            } else {
+                setStatus("Connecting to server…");
+            }
+            const res = await fetch(`${BACKEND}/start`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ user_id: USER_ID })
+            });
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const data = await res.json();
+            
+            if (data.user_name && !localStorage.getItem("myhaven_user_name")) {
+                localStorage.setItem("myhaven_user_name", data.user_name);
+                document.getElementById("profile-name").textContent = data.user_name;
+            }
 
-        appendMessage("haven", data.reply);
-        setStatus("Online \u00B7 Haven");
-    } catch {
-        appendMessage("haven","Hey! I'm Haven 💛 It looks like my cloud engine is still waking up. Please wait 10 seconds and refresh the page! (This happens after long periods of inactivity).");
+            appendMessage("haven", data.reply);
+            setStatus("Online · Haven");
+            isConnected = true;
+        } catch (err) {
+            console.warn(`Connection attempt ${attempts} failed:`, err);
+            if (attempts < maxAttempts) {
+                setStatus(`⚡ Server is waking up (Render cold start)... Please wait (Attempt ${attempts}/${maxAttempts})`);
+                await new Promise(r => setTimeout(r, 4000));
+            }
+        }
+    }
+    
+    if (!isConnected) {
+        const backendDesc = BACKEND ? BACKEND : "Same Origin";
+        appendMessage("haven", `Hey! I couldn't connect to the backend server (${backendDesc}).\n\nIf your backend is hosted on Render's free tier, it may take 30–50 seconds to wake up after inactivity. Please refresh the page or click **Server URL** in the top header to set your Render API URL.`);
         setStatus("⚠️ Connection error");
     }
 }
@@ -731,24 +778,48 @@ async function sendMessage() {
     input.value = ""; autoResize(input);
     appendMessage("user", text);
     showTyping(); setStatus("Haven is typing…"); isThinking = true;
-    try {
-        const personaHint = (currentPersona && PERSONA_PROMPTS[currentPersona]) ? PERSONA_PROMPTS[currentPersona] : '';
-        const res  = await fetch(`${BACKEND}/chat`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({user_id:USER_ID,message:text,persona_hint:personaHint})});
-        const data = await res.json();
-        hideTyping();
-        appendMessage("haven", data.reply);
-        updateEmotion(data.emotion);
-        updateSentiment(data.sentiment);
-        updateContextPanel(data.context);
-        setStatus("Online · Haven");
-        // Refresh diary panel live if it's open
-        if (!document.getElementById('diary-panel').classList.contains('hidden')) {
-            loadDiaryEntries();
+    
+    let success = false;
+    let attempts = 0;
+    const maxAttempts = 5;
+    
+    while (!success && attempts < maxAttempts) {
+        attempts++;
+        try {
+            if (attempts > 1) {
+                setStatus(`⚡ Server is waking up (Render cold start)... Please wait (Attempt ${attempts}/${maxAttempts})`);
+            }
+            const personaHint = (currentPersona && PERSONA_PROMPTS[currentPersona]) ? PERSONA_PROMPTS[currentPersona] : '';
+            const res  = await fetch(`${BACKEND}/chat`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ user_id: USER_ID, message: text, persona_hint: personaHint })
+            });
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const data = await res.json();
+            hideTyping();
+            appendMessage("haven", data.reply);
+            updateEmotion(data.emotion);
+            updateSentiment(data.sentiment);
+            updateContextPanel(data.context);
+            setStatus("Online · Haven");
+            // Refresh diary panel live if it's open
+            if (!document.getElementById('diary-panel').classList.contains('hidden')) {
+                loadDiaryEntries();
+            }
+            success = true;
+        } catch (err) {
+            console.warn(`sendMessage attempt ${attempts} failed:`, err);
+            if (attempts < maxAttempts) {
+                setStatus(`⚡ Server is waking up (Render cold start)... Please wait (Attempt ${attempts}/${maxAttempts})`);
+                await new Promise(r => setTimeout(r, 4000));
+            } else {
+                hideTyping();
+                const backendDesc = BACKEND ? BACKEND : "Same Origin";
+                appendMessage("haven", `Hmm, couldn't reach the server (${backendDesc}). Please check your server status or click **Server URL** in the top header to configure the backend API URL.`);
+                setStatus("⚠️ Connection error");
+            }
         }
-    } catch {
-        hideTyping();
-        appendMessage("haven","Hmm, couldn't reach the server. Is the backend running?");
-        setStatus("⚠️ Connection error");
     }
     isThinking = false;
 }

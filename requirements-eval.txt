@@ -1,0 +1,7 @@
+# Offline metrics and evaluation dependencies
+numpy
+pandas
+seaborn
+plotly
+scikit-learn
+joblib

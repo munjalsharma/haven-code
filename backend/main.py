@@ -5,12 +5,26 @@ All conversation history, user context, mood, topics saved to myhaven.db
 Crisis: shares helplines BUT keeps conversation open
 """
 
+import sys
+import io
 import sqlite3
 import json
 import os
 import re
 import time
 import csv
+
+# Reconfigure stdout/stderr for Windows console unicode support
+if hasattr(sys.stdout, 'reconfigure'):
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
+if hasattr(sys.stderr, 'reconfigure'):
+    try:
+        sys.stderr.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
 import io
 from datetime import datetime
 from typing import Dict, List, Tuple, Any
@@ -35,6 +49,21 @@ try:
     load_dotenv()
 except Exception:
     pass
+
+from mindmate_integration import MindMateSentimentAnalyzer
+
+_head_loaded = False
+try:
+    print("[MindMate] Loading sentiment analyzer...")
+    mindmate_analyzer = MindMateSentimentAnalyzer(model_path="muril_emotion_model.pth")
+    _head_loaded = getattr(mindmate_analyzer, "weights_loaded", False)
+    print("[MindMate] SUCCESS: Analyzer ready!")
+except Exception as e:
+    print(f"[MindMate] ⚠️ Warning loading local model weights: {e}")
+    print("[MindMate] Falling back to Groq API sentiment analyzer.")
+    mindmate_analyzer = MindMateSentimentAnalyzer(model_path=None)
+    _head_loaded = getattr(mindmate_analyzer, "weights_loaded", False)
+
 
 # Helper to dynamically get GROQ_API_KEY
 def get_groq_api_key() -> str:
@@ -92,19 +121,19 @@ INDIA_KIRAN = "9152987821 (Kiran · Free · 24/7)"
  
 def get_db_connection():
     global _postgres_working
-    if DATABASE_URL and psycopg2 and _postgres_working is not False:
+    if DATABASE_URL and psycopg2:
         url = DATABASE_URL
-        if "supabase.co" in url or "supabase.com" in url:
+        if "supabase.co" in url or "supabase.com" in url or "pooler.supabase.com" in url:
             if "sslmode=" not in url:
                 separator = "&" if "?" in url else "?"
                 url += f"{separator}sslmode=require"
         try:
-            conn = psycopg2.connect(url)
+            conn = psycopg2.connect(url, connect_timeout=10)
             _postgres_working = True
             return conn
         except Exception as e:
-            print(f"[DB] Postgres connection failed: {e}")
-            print("[DB] Falling back to SQLite for this session.")
+            print(f"[DB] ⚠️ Postgres connection attempt failed: {e}")
+            print("[DB] Falling back to local SQLite for this query.")
             _postgres_working = False
 
     conn = sqlite3.connect(DB_PATH, check_same_thread=False)
@@ -649,7 +678,7 @@ app.add_middleware(
 @app.on_event("startup")
 def startup_event():
     init_db()
-    print("[Startup] ✅ MyHaven Backend v6.0 ready")
+    print("[Startup] [OK] MyHaven Backend v6.0 ready")
  
  
 # ── Request Models ────────────────────────────────────────────────────────────
@@ -751,7 +780,7 @@ def chat(req: ChatReq):
             "mood_history": ctx.get("mood_history", [])
         },
         "meta": {
-            "groq_model": GROQ_MODEL,
+            "groq_model": get_groq_model(),
             "muril_loaded": _head_loaded
         },
     }
@@ -813,6 +842,23 @@ def export_diary_csv(user_id: str):
     )
  
  
+@app.get("/")
+def root():
+    """Root endpoint for status check (Render / Cloud status)."""
+    return {
+        "status": "online",
+        "service": "MyHaven Backend API",
+        "version": "6.1",
+        "database": "Postgres (Supabase)" if is_postgres() else "SQLite",
+        "groq_api_key_set": bool(get_groq_api_key()),
+        "endpoints": {
+            "health": "/health",
+            "admin": "/admin",
+            "docs": "/docs"
+        }
+    }
+
+
 @app.get("/health")
 def health():
     """Check backend status."""
@@ -822,9 +868,11 @@ def health():
         "groq_model": get_groq_model(),
         "muril_loaded": _head_loaded,
         "api_key_set": bool(get_groq_api_key()),
-        "db_path": DB_PATH,
+        "database": "Postgres (Supabase)" if is_postgres() else "SQLite",
+        "db_path": DB_PATH if not is_postgres() else "Supabase Connection Pooler",
         "version": "6.1"
     }
+
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -978,3 +1026,10 @@ def admin_api_history(user_id: str, key: str):
         from fastapi import HTTPException
         raise HTTPException(status_code=401, detail="Invalid admin key")
     return db_admin_get_full_history(user_id)
+
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.getenv("PORT", 8000))
+    print(f"[Main] Starting MyHaven server on 0.0.0.0:{port}...")
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=False)
