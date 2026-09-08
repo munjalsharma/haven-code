@@ -639,20 +639,36 @@ def groq_chat(user_id: str, user_message: str, persona_hint: str = "") -> str:
         system_prompt += f"\n\nPERSONA OVERRIDE:\n{persona_hint}"
     messages = [{"role": "system", "content": system_prompt}] + history
 
-    # 7. Call Groq
-    try:
-        client = get_groq()
-        if not client:
-            return "⚠️ GROQ_API_KEY missing. Please add GROQ_API_KEY to your Vercel Environment Variables or backend/.env file."
-        model_name = get_groq_model()
-        r = client.chat.completions.create(
-            model=model_name, messages=messages,
-            temperature=0.85, max_tokens=260, top_p=0.95
-        )
-        reply = r.choices[0].message.content.strip()
-    except Exception as e:
-        print(f"[Groq Error] {e}")
+    # 7. Call Groq with model fallback list
+    reply = None
+    client = get_groq()
+    if not client:
+        return "⚠️ GROQ_API_KEY missing. Please add GROQ_API_KEY to your Vercel Environment Variables or backend/.env file."
+
+    models_to_try = [
+        get_groq_model(),
+        "llama-3.1-8b-instant",
+        "llama-3.3-70b-versatile",
+        "llama3-70b-8192"
+    ]
+    seen = set()
+    models_to_try = [m for m in models_to_try if m and not (m in seen or seen.add(m))]
+
+    for model_name in models_to_try:
+        try:
+            r = client.chat.completions.create(
+                model=model_name, messages=messages,
+                temperature=0.85, max_tokens=260, top_p=0.95
+            )
+            reply = r.choices[0].message.content.strip()
+            if reply:
+                break
+        except Exception as e:
+            print(f"[Groq Model '{model_name}' Error] {e}")
+
+    if not reply:
         reply = "I got a little glitchy — could you say that again?"
+
 
     # 8. Save assistant reply to DB
     db_add_message(user_id, "assistant", reply)

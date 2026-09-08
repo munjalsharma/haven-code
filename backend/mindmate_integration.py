@@ -211,13 +211,32 @@ class MindMateSentimentAnalyzer:
             Example: {{"emotion": "joy", "confidence": 0.98, "emoji": "😊"}}
             """
             
-            completion = self.client.chat.completions.create(
-                model=os.getenv("GROQ_MODEL", "groq/compound-mini").strip(),
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.1,
-                max_tokens=50,
-                response_format={ "type": "json_object" }
-            )
+            models_to_try = [
+                os.getenv("GROQ_MODEL", "").strip(),
+                "llama-3.1-8b-instant",
+                "llama-3.3-70b-versatile",
+                "llama3-70b-8192"
+            ]
+            models_to_try = [m for m in models_to_try if m and not m.startswith("groq/")]
+            
+            completion = None
+            for model_name in models_to_try:
+                try:
+                    completion = self.client.chat.completions.create(
+                        model=model_name,
+                        messages=[{"role": "user", "content": prompt}],
+                        temperature=0.1,
+                        max_tokens=50,
+                        response_format={ "type": "json_object" }
+                    )
+                    if completion:
+                        break
+                except Exception as m_err:
+                    print(f"[MindMate] Groq model '{model_name}' failed: {m_err}")
+            
+            if not completion:
+                return self._keyword_fallback(text)
+
             
             result = json.loads(completion.choices[0].message.content)
             # Ensure fields exist
