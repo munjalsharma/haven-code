@@ -128,13 +128,8 @@ class MindMateSentimentAnalyzer:
                 print("[MindMate] WARNING: GROQ_API_KEY not found. Falling back to keyword matching.")
                 self.client = None
             else:
-                try:
-                    self.client = Groq(api_key=self.api_key)
-                    print("[MindMate] SUCCESS: Groq client initialized for emotion detection.")
-                except Exception as e:
-                    print(f"[MindMate] ⚠️ Warning: Failed to initialize Groq client: {e}")
-                    self.client = None
-
+                self.client = Groq(api_key=self.api_key)
+                print("[MindMate] SUCCESS: Groq client initialized for emotion detection.")
                 
         print("Sentiment Analyzer initialized!")
         print("="*60 + "\n")
