@@ -67,7 +67,9 @@ except Exception as e:
 
 # Helper to dynamically get GROQ_API_KEY
 def get_groq_api_key() -> str:
-    return os.getenv("GROQ_API_KEY", "").strip()
+    key = os.getenv("GROQ_API_KEY", "").strip()
+    return key.strip('"').strip("'").strip()
+
 
 # Helper to dynamically get GROQ_MODEL (fallback to valid Groq model)
 def get_groq_model() -> str:
@@ -599,7 +601,7 @@ def get_groq():
     api_key = get_groq_api_key()
     if not api_key:
         return None
-    if _groq_client is None:
+    if _groq_client is None or getattr(_groq_client, "api_key", None) != api_key:
         from groq import Groq
         _groq_client = Groq(api_key=api_key)
     return _groq_client
@@ -613,7 +615,7 @@ def _is_crisis(text: str) -> bool:
 def groq_chat(user_id: str, user_message: str, persona_hint: str = "") -> str:
     api_key = get_groq_api_key()
     if not api_key:
-        return "⚠️ GROQ_API_KEY missing. Please add GROQ_API_KEY to your Vercel Environment Variables or backend/.env file."
+        return "⚠️ GROQ_API_KEY missing. Please add GROQ_API_KEY to your Render/Vercel Environment Variables."
 
     crisis = _is_crisis(user_message)
 
@@ -643,17 +645,24 @@ def groq_chat(user_id: str, user_message: str, persona_hint: str = "") -> str:
     reply = None
     client = get_groq()
     if not client:
-        return "⚠️ GROQ_API_KEY missing. Please add GROQ_API_KEY to your Vercel Environment Variables or backend/.env file."
+        return "⚠️ GROQ_API_KEY missing. Please add GROQ_API_KEY to your Render/Vercel Environment Variables."
 
     models_to_try = [
-        get_groq_model(),
         "llama-3.1-8b-instant",
         "llama-3.3-70b-versatile",
-        "llama3-70b-8192"
+        "llama3-70b-8192",
+        "llama3-8b-8192",
+        "mixtral-8x7b-32768",
+        "gemma2-9b-it"
     ]
+    configured = get_groq_model()
+    if configured and configured not in models_to_try:
+        models_to_try.insert(0, configured)
+
     seen = set()
     models_to_try = [m for m in models_to_try if m and not (m in seen or seen.add(m))]
 
+    last_error = ""
     for model_name in models_to_try:
         try:
             r = client.chat.completions.create(
@@ -664,16 +673,22 @@ def groq_chat(user_id: str, user_message: str, persona_hint: str = "") -> str:
             if reply:
                 break
         except Exception as e:
+            last_error = str(e)
             print(f"[Groq Model '{model_name}' Error] {e}")
 
     if not reply:
-        reply = "I got a little glitchy — could you say that again?"
-
+        if "api_key" in last_error.lower() or "401" in last_error or "authentication" in last_error.lower():
+            reply = "⚠️ Groq API Error: Invalid API key. Please check your GROQ_API_KEY in Render settings."
+        elif "rate" in last_error.lower() or "429" in last_error:
+            reply = "⚠️ Groq API rate limit reached. Please wait a few seconds and try again."
+        else:
+            reply = "I got a little glitchy — could you say that again?"
 
     # 8. Save assistant reply to DB
     db_add_message(user_id, "assistant", reply)
 
     return reply
+
  
  
 # ══════════════════════════════════════════════════════════════════════════════
@@ -877,17 +892,41 @@ def root():
 
 @app.get("/health")
 def health():
-    """Check backend status."""
+    """Check backend status and test Groq API connectivity."""
+    groq_test_status = "untested"
+    groq_test_error = ""
+    client = get_groq()
+    if not client:
+        groq_test_status = "missing_api_key"
+    else:
+        try:
+            r = client.chat.completions.create(
+                model="llama-3.1-8b-instant",
+                messages=[{"role": "user", "content": "ping"}],
+                max_tokens=5
+            )
+            groq_test_status = "connected"
+        except Exception as e:
+            groq_test_status = "error"
+            groq_test_error = str(e)
+
+    api_k = get_groq_api_key()
+    masked_key = (api_k[:7] + "..." + api_k[-4:]) if len(api_k) > 12 else ("set" if api_k else "missing")
+
     return {
         "ok": True,
         "time": time.time(),
+        "groq_connection": groq_test_status,
+        "groq_error": groq_test_error if groq_test_status == "error" else "",
         "groq_model": get_groq_model(),
         "muril_loaded": _head_loaded,
-        "api_key_set": bool(get_groq_api_key()),
+        "api_key_set": bool(api_k),
+        "api_key_preview": masked_key,
         "database": "Postgres (Supabase)" if is_postgres() else "SQLite",
         "db_path": DB_PATH if not is_postgres() else "Supabase Connection Pooler",
-        "version": "6.1"
+        "version": "6.2"
     }
+
 
 
 
